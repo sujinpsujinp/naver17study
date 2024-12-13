@@ -1,0 +1,12 @@
+package day1212;
+
+public class Ex5Operator {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//조건(삼항)연산자 조건식1? 참일때 값 : 거짓일때 값
+		
+		
+	}
+
+}

@@ -1,0 +1,14 @@
+package day1212;
+
+public class Ex6Date {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//현재 날짜와 시간을 얻어보자
+		//Date 클래스는 jdk1.1이후에 deprecate됨 - Calander를 권장
+		
+		
+		
+	}
+
+}
