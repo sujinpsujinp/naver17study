@@ -1,0 +1,29 @@
+package day1216;
+
+public class Ex10Gugudan {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//2단 3단 ...9단 한페이지에 출력시키기
+		//다중for문
+		
+		for(int i=2;i<=9; i++)
+		{
+		System.out.printf("[%d단] ",i);
+		}
+		System.out.println();
+		System.out.println("=".repeat(65));
+		
+		for(int j=2;j<=9;j++) //행 반복
+		{
+			for(int y=1;y<=9;y++) //열 
+			{
+				System.out.println(j+"X"+y+"="+j*y);
+			}
+			System.out.println();
+		}
+
+		
+	}
+
+}
