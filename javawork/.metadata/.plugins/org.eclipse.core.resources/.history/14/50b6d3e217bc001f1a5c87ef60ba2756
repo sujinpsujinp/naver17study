@@ -1,0 +1,17 @@
+package day1217;
+
+public class Ex2Array {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		char []ch;//배열선언
+		
+		ch=new char[4];//0~3번 인덱스까지 데이터를 넣을 수 있다.
+		
+		System.out.println("배열크기:"+ch.length);
+		
+		
+
+	}
+
+}
