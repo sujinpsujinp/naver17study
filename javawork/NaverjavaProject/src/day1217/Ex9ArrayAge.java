@@ -14,20 +14,33 @@ public class Ex9ArrayAge {
 		 * 출력양식
 		 * 10대 : 1명
 		 * 20대 : 3명...
+		 * 
+		 * 인원수 구하기
+		 * %10ㅣㅣ
 		 */
-		int []age;
-		
-		for(int i=0;i<message.length();i++)
+//		int []age=new int[5];
+//		for(int i=0;i<(datas.length/10)-1;i++)
+//		{
+//			//각 인원수 구하기
+//			
+//		}
+//		//출력
+//		for(int i=0;i<age.length;i++)
+//		{
+//			System.out.println("대 : "+age[i]);
+//		}
+		int []age=new int[5];
+		for(int i=0;i<datas.length;i++)
 		{
-			//한글자씩 얻는다.
-			char ch=message.charAt(i);
-			//대문자인 경우 'A'를 뺀 번지수를 1증가
-			if(ch>='A'&&ch<='Z')
-				alpha[ch-'A']++;
-			else if(ch>='a'&&ch<='z')//소문자인 경우
-				alpha[ch-'a']++;			
+			//연령별 인원 수 구하기
+			//10대일 경우 0번지 증가, 20대일 경우 1번지 증가
+			age[datas[i]/10-1]++;//10대인 경우 12/10> 몫이 1이니까 -1을하면 0번지에 10대가 저장됨
+			//age[datas[i]/20-1]++
 		}
-		
+		for(int i=0;i<age.length;i++)
+		{
+			System.out.println((i+1)*10+"대:"+age[i]+"명");
+		}
 		
 
 	}

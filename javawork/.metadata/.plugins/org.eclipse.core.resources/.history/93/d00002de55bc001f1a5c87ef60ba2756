@@ -1,0 +1,22 @@
+package day1217;
+
+public class Practice {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//Ex1 배열
+		char []ch; //배열 선언
+		int []num;
+		String []text;
+		
+		ch=char[3];
+		
+		//초기값 확인
+		for(int i=0;i<ch.length;i++)
+		{
+			System.out.println("ch["+i+"]="+ch[i]);
+		}
+
+	}
+
+}

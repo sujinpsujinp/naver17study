@@ -9,8 +9,8 @@ public class Ex2Array {
 		ch=new char[4];//0~3번 인덱스까지 데이터를 넣을 수 있다.
 		
 		//초기값 확인용 수업외 내가 입력
-//		for(int i=0;i<ch.length;i++)
-//			System.out.println("ch["+i+"]="+ch[i]);
+		for(int i=0;i<ch.length;i++)
+			System.out.println("ch["+i+"]="+ch[i]);
 		
 		System.out.println("배열크기:"+ch.length);
 		//각각의 배열에 데이터 넣기
