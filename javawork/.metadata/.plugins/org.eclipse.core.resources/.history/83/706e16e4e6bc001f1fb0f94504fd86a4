@@ -1,6 +1,6 @@
-package day1217;
+package day1218;
 
-public class Practice {
+public class Ex5Array2Binggo {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

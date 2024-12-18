@@ -8,6 +8,7 @@ public class Book125 {
 		
 		//java 11이전문법
 		int score1=0;
+		
 		switch(grade) {
 		case "A":
 			score1=100;

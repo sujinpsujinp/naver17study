@@ -1,10 +1,9 @@
-package day1217;
+package day1218;
 
-public class Practice {
+public class Ex6Object {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		char []ch; //배열 선언
 
 	}
 
