@@ -1,0 +1,23 @@
+package day1218;
+
+public class Practice2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//Ex3 4 5 2차배열
+		int [][]arr1=new int[2][];//행의 개수만 먼저 설정
+		arr1[0]=new int[3];//첫번째 행에 3열 지정
+		arr1[1]=new int[5];//두번째 행에 5열 지정
+		//행과 열 출력
+		System.out.println("행 개수:"+arr1.length);
+		System.out.println("0행의 열 개수:"+arr1[0].length);
+		System.out.println("1행의 열 개수:"+arr1[1].length);
+		
+		//2차원 배열에 값 저장
+		arr1[0][2]=50;
+		arr1[1][1]=90;
+		arr1[1][3]=70;
+		
+	}
+
+}

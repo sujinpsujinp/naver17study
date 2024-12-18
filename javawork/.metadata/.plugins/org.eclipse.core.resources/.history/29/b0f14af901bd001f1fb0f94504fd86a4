@@ -1,0 +1,25 @@
+package day1218;
+
+class Orange
+{
+	s
+}
+
+public class Ex8Object {
+	
+	
+	public static final String MESSAGE="Happy";
+	
+	private String name;
+	private String age;
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		
+		
+		
+	}
+
+}

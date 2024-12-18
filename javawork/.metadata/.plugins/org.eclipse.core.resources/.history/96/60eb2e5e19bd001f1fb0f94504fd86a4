@@ -1,0 +1,22 @@
+package day1218;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Practice1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		//Ex2 1차배열 로또
+		int money;
+		int [] lotto=new int[6];
+		Random r=new Random();
+		//금액 입력
+		
+		//1000원 미만이면  종료
+		
+		//금액만큼 로또 숫자 발생 후 출력(오름차순)
+	}
+
+}
