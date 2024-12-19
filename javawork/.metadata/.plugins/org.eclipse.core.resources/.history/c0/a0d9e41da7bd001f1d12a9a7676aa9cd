@@ -1,0 +1,15 @@
+package day1219;
+
+public class Ex1ObjectArray {
+	Student []stuArray=new Student[3];//초기값은 null
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		
+		
+		
+	}
+
+}

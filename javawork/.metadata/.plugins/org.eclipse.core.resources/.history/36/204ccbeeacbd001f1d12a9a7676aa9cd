@@ -1,0 +1,24 @@
+package day1219;
+
+import java.util.Scanner;
+
+public class Ex2ObjectArray {
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		int inwon;
+		Student []stuArray;
+		
+		System.out.println("입력할 인원은?");
+		inwon=Integer.parseInt(sc.nextLine());
+		stuArray=new Student[inwon];
+		
+		
+		
+		
+	}
+
+}
