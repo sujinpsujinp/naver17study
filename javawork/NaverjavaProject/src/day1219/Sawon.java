@@ -40,8 +40,7 @@ public class Sawon {
 		this.famSu = famSu;
 	}
 
-	/*
-	 * 직급에 따라 기본급gibonPay를 구하는데 부장->450, 과장->300, 대리->250, 사원->150 getGibonPay()
+	/* 직급에 따라 기본급gibonPay를 구하는데 부장->450, 과장->300, 대리->250, 사원->150 getGibonPay()
 	 */
 	public int getGibonPay() {
 		int gibonPay = switch (position) {

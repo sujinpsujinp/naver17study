@@ -42,8 +42,12 @@ public class Ex12SawonArray {
 			String position=sc.nextLine();
 			System.out.println("가족수는??");
 			int famSu=Integer.parseInt(sc.nextLine());
+			
+			mySawon[i]=new Sawon(sawonName, position, famSu);
+			System.out.println();
+			
 		}		
-		
+
 		//제목 출력
 		showTitle();
 		
