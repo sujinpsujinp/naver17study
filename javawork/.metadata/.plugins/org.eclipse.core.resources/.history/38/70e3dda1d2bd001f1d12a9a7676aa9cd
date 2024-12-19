@@ -1,0 +1,24 @@
+package day1219;
+
+import java.text.SimpleDateFormat;
+
+public class MyCar {
+	//멤버변수 기본데이터 넣을 수 있게 생성자 만들
+	
+	private String carName;
+	private int carPrice;
+	private String goipDay;
+	private String	carColor;
+	
+	public MyCar() {
+		//생성되는 시간을 guipDay 구해서 넣어보자
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-mm-dd HH:mm");
+		guipDay=sdf.format(new date());
+		
+		carColor="흰색";
+	}
+	
+	
+	
+
+}

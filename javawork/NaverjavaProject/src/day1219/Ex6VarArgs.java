@@ -36,7 +36,7 @@ public class Ex6VarArgs {
 		writeColor("Red");
 		writeColor("yello", "green");
 		writeColor("white","ornage","black");
-		//writeColor("white","ornage","black","red");//오류 발생-해당 오버로딩 메서드가 존재하지 않음
+		//writeColor("white","orange","black","red");//오류 발생-해당 오버로딩 메서드가 존재하지 않음
 
 		System.out.println("Variable Arguments 기능을 이용해서 인자로 여러 문자열을 보내보자");
 		writeName("이미지");

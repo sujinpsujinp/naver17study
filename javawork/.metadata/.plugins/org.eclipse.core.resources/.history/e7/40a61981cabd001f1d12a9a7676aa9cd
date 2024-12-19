@@ -1,0 +1,16 @@
+package day1219;
+
+public class Ex8StringBuffer {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String str="Happy";
+		//String ->StringBuffer
+		StringBuffer sb=new StringBuffer(str);
+		//인스턴스 변수인 경우 변수명만 출력 시 자동으로 toString() 호출
+		System.out.println(sb);
+		System.out.println(sb.toString());
+	
+	}
+
+}

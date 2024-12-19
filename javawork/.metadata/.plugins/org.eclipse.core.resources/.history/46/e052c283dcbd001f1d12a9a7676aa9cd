@@ -1,0 +1,14 @@
+package day1219;
+
+public class Book235 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//Carculator 객체 선언
+		Carculator myCalc=new Carculator();
+		
+		//리턴값이 없는 powerOn() 메소드 호출
+		my carc.
+	}
+
+}
