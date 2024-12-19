@@ -18,7 +18,7 @@ public class Ex12SawonArray {
 	public static void writeSawon(Sawon sawon)
 	{
 		System.out.println(sawon.getSawonName()+"\t"+sawon.getPosition()+"\t"+sawon.getsuDang()+"\t"
-					+sawon.getFamSu()+"\t"+sawon.getTax()+"\t"+sawon.getNetPay());
+					+sawon.getFamSuDang()+"\t"+sawon.getTax()+"\t"+sawon.getNetPay());
 	}
 
 	public static void main(String[] args) {
