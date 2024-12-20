@@ -1,0 +1,24 @@
+package day1220;
+
+class Apple
+{
+	public void job()
+	{
+		System.out.println("아침 식사를 준비합니다.");
+	}
+	
+	protected void study()
+	{
+		System.out.println("자바 공부를 합니다.");
+	}
+}
+
+public class Ex4Inheri {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+	}
+
+}

@@ -1,0 +1,19 @@
+package day1220_2;
+
+public class DBServerSystem {
+	
+	String dbServerName;
+	
+	public DBServerSystem() 
+	{
+		dbServerName="Oracle";
+		
+	}
+	public DbServerSystem(String dbServerName)
+	{
+		this.dbServerName=dbServerName;
+	}
+	
+	
+	
+}

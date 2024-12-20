@@ -1,0 +1,19 @@
+package day1220;
+
+class Parent2
+{
+	public void process();
+}
+public class Ex6Abstract {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		
+		
+		
+		
+	}
+
+}

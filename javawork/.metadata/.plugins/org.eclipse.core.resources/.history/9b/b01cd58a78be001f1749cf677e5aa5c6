@@ -1,0 +1,48 @@
+package day1220;
+
+class SuperObj2
+{
+	private String schoolName;
+	
+	public SuperObj2() {
+		// TODO Auto-generated constructor stub
+		schoolName="청담고등학교";
+	}
+	SuperObj2(String schoolName)
+	{
+		this.schoolName=schoolName;
+	}
+	
+	public void write()
+	{
+		System.out.println("학교명:"+schoolName);
+	}
+}
+
+
+class SubObj2 extends SuperObj2
+{
+	private String studentName;
+	
+	public SubObj2() {
+		studentName="이름없음";
+	}
+	SubObj2(String schoolName,String studentName)
+	{
+		super(schoolName);
+		this.studentName=studentName;
+	}
+}
+
+public class Ex2Inheri {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		
+		
+
+	}
+
+}

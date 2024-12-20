@@ -1,0 +1,21 @@
+package day1220;
+
+import day1220_2.Apple;
+
+///////////////////////////////////////////////////
+class Orange extends Apple
+{
+	public void play()
+	{
+		
+	}
+}
+public class Ex4Inheri {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+	}
+
+}
