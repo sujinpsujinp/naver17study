@@ -101,10 +101,10 @@ public class Ex11InterfaceMunje {
 		dbProcess(new Subcom);
 		
 		switch(num1) {
-		case 1-> Subcom.Insert();
-		case 2-> Subcom.List();
-		case 3-> Subcom.Delete();
-		case 4-> Subcom.Update();
+//		case 1-> Subcom.Insert();
+//		case 2-> Subcom.List();
+//		case 3-> Subcom.Delete();
+//		case 4-> Subcom.Update();
 		default -> System.out.println("프로그램을 종료합니다.");
 		}
 		

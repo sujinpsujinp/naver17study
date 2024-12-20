@@ -89,16 +89,14 @@ public class Ex11InterfaceMunje {
 		num1=sc.nextInt();
 		
 		
-		//Command Subcom=new Subcom();
-		
+		Command Subcom=new Subcom();
+		Subcom.List();
 		
 //		Subcom.List();
 //		Subcom.Delete();
 //		Subcom.Update();
 //		Subcom.Insert();
 //		Subcom.process();
-		
-		dbProcess(new Subcom);
 		
 		switch(num1) {
 		case 1-> Subcom.Insert();

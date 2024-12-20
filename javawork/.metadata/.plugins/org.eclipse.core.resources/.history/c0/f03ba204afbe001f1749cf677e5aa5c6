@@ -48,7 +48,7 @@ public class Ex6Abstract {
 		
 		//p.draw();//오류발생
 		//p에 Yout2가 생성되어있는 경우에는 오류가 발생한다.
-		//((Your1)p).draw();//다운캐스팅 후 호출하면 됨
+		((Your1)p).draw();//다운캐스팅 후 호출하면 됨
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
