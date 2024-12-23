@@ -1,0 +1,39 @@
+package day1223;
+
+class OuterOBj//외부클래스
+{
+	int a=10;
+	static int b=20;
+	private int c=30;
+		
+		class InnerObj//내부클래스는 하나의 멤버로 인식하기에 private로 인식
+		{
+			int x=40;
+			static int y=50;//일반 내부클래스는 static이 안됨 > 낮은 버전이면 에러발생함
+			
+			public void disp()
+			{
+				System.out.println("a="+a);
+				System.out.println("b="+b);
+				System.out.println("c="+c);
+				System.out.println("x="+x);
+				System.out.println("y="+y);
+			}
+		
+			
+		}
+			
+}
+
+public class Ex2InnerClass {
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//외부 먼저 생성 그로인해서 내부 따로 생성해서 호출해야함
+		
+		
+		
+	}
+
+}

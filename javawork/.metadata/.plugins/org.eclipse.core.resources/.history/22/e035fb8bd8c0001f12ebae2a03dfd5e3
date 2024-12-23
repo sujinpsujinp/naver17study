@@ -1,0 +1,29 @@
+package day1223;
+
+abstract class AbstSawon
+{
+	abstract public void addSawon();
+	abstract public void removeSawon();
+}
+////////////////////////////////////////////////
+interface InterSales
+{
+	public void insertSangpum();
+	public void selectSangpum();
+}
+////////////////////////////////////////////////
+//위의 클래스와 인터페이스를 익명 내부 클래스 형태로 구현 후 
+//메인에서 호출하시오
+
+
+
+public class Ex4InnerClass {
+	
+	AbstSawon abst1=new AbstSa();
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

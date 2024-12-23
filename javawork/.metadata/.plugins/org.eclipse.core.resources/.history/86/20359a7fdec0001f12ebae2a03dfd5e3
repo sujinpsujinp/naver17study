@@ -1,0 +1,26 @@
+package day1223;
+
+import javax.swing.JFrame;
+
+class MyFrame extends JFrame
+{
+	public MyFrame() {
+		super();//생략가능
+		
+		this.setBounds(300, 100, 300, 300);//x,y, width, height
+		this.setVisible(true);//프레임이 보임(true:보임, false:안보임)
+		//frame true로 두고 실행 > X누른다고 종료되는게 아님
+		
+	}
+}
+
+public class Ex6JFrame {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MyFrame my=new MyFrame();
+	
+		
+	}
+
+}
