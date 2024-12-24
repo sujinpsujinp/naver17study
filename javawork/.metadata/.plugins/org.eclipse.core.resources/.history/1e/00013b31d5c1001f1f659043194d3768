@@ -33,28 +33,16 @@ public class Ex12FileList {
 			}
 			System.out.println();
 			
-			}catch (IOException e) {
+			}catch (FileNotFoundException e) {
 				System.out.println("**해당 파일을 찾을 수 없습니다**");
 			}finally {
-				if(br!=null)
-					try {
-						br.close();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}//파일이 삭제돼서 없을 수 있는데 이 경우에!
-				if(fr!=null)
-					try {
-						fr.close();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}//널포인트익셉션 트라이해주않으면 if문이라도 넣어줘야함
+				if(br!=null) br.close();//파일이 삭제돼서 없을 수 있는데 이 경우에!
+				if(fr!=null) fr.close();//널포인트익셉션 트라이해주않으면 if문이라도 넣어줘야함
 			}
 		}
 		
 	
-
+}
 	
 	public void sawonMemberList()
 	{
