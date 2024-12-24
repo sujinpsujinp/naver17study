@@ -28,6 +28,7 @@ public class Ex12FileList {
 			while(true)
 			{
 				String line=br.readLine();//한줄 읽고
+				sawonList.add(line);
 				if(line==null)//내용이 없으면 나가기
 					break;
 			}
