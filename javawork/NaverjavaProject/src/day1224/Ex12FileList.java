@@ -24,7 +24,6 @@ public class Ex12FileList {
 			fr=new FileReader(FILENAME);
 			br=new BufferedReader(fr);
 			
-			int n=0;
 			while(true)
 			{
 				String line=br.readLine();//한줄 읽고
