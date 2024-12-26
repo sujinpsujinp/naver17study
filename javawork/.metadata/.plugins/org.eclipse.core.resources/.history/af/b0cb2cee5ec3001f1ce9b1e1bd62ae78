@@ -1,0 +1,33 @@
+package day1226;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JFrame;
+import javax.swing.JTable;
+
+public class Ex6TableCRUD extends JFrame {
+	static final String FILENAME="d:/naver1210/student.txt";
+	List<Student> list=new ArrayList<Student>();
+	JTable table;
+	
+	public Ex6TableCRUD() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void initDesign()
+	{
+		
+	}
+	
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		
+	}
+
+}

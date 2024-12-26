@@ -1,0 +1,15 @@
+package day1226;
+
+//
+
+public class Pr1226 {
+	private String name;
+	private String dep;
+	private String address;
+	private int score;
+	
+	
+	
+	
+
+}
