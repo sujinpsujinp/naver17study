@@ -1,0 +1,153 @@
+package day1224;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.List;
+import java.util.Vector;
+
+public class Ex12FileList {
+
+	static final String FILENAME="d:/naver1210/sawon.txt";
+	
+	
+	List<String> sawonList=new Vector<String>();
+	
+	public Ex12FileList() {
+		//파일에서 이름 읽어서 sawonlist에 추가해주세요.
+		//filereadline???
+		FileReader fr=null;
+		BufferedReader br=null;
+	
+		try {
+			fr=new FileReader(FILENAME);
+			br=new BufferedReader(fr);
+			
+			while(true)
+			{
+				String name=br.readLine();
+				if(name==null)
+					break;
+				//Vector에 추가
+				sawonList.add(name);
+			}
+	
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("**해당 파일을 찾을 수 없습니다**");
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				br.close();
+				fr.close();
+			}catch (IOException|NullPointerException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+		/*내가 만든 코드
+		try {	
+			br=new BufferedReader(fr);
+			fr=new FileReader(FILENAME);
+			
+			while(true)
+			{
+				String line=br.readLine();//한줄 읽고
+				sawonList.add(line);
+				if(line==null)//내용이 없으면 나가기
+					break;
+			}
+			System.out.println();
+			
+			}catch (IOException e) {
+				System.out.println("**해당 파일을 찾을 수 없습니다**");
+			}finally {
+				if(br!=null)
+					try {
+						br.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}//파일이 삭제돼서 없을 수 있는데 이 경우에!
+				if(fr!=null)
+					try {
+						fr.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}//널포인트익셉션 트라이해주않으면 if문이라도 넣어줘야함
+			}
+		}
+
+*/
+	public void sawonMemberList()
+	{
+		//사원 이름과 번호를 같이 출력해주세요.
+		System.out.println("총 "+sawonList.size()+"명의 사원이 있습니다.");
+		System.out.println();
+		System.out.println("사원\t사원명");
+		int n=0;
+		for(String name:sawonList)
+			System.out.println(++n+"\t"+name);
+		System.out.println();
+		
+		
+		
+		
+		//for문 사용해서 출력
+		//내가 만든 코드
+//		int n=0;
+//		for(String s:sawonList)
+//		System.out.println(++n+":"+s);
+	}
+	
+	//해당 이름이 몇번 인덱스에 있는지 리턴(없으면 -1리턴)
+	public int getSearchName(String name){//검색, 삭제시에도 사용됨 getSearchName
+		
+		int idx=-1;//존재하지 않는 것 중에 제일 작은 것이기에 -1
+		for(int i=0;i<sawonList.size();i++)
+		{
+			String listName=sawonList.get(i);
+			if(listName.equals(name))//중복된 이름이 없다는 조건
+			{
+				idx=i;
+				break;
+			}
+		}
+		return idx;
+	}
+	
+	//이름 입력 시 삭제하는 메서드
+	public void deleteSawon(String name)
+	{
+		int idx=getSearchName(name);//getSearchName 앞에 this. 생략된 것
+		if(idx==-1)
+			System.out.println(name+"님은 사원명단에 없습니다.");
+		else
+		{
+			sawonList.remove(idx);
+			System.out.println(name+" 님을 사원명단에서 삭제했습니다.");
+		}		
+	}
+	
+	//이름 조회
+	public void searchName(String name)
+	{
+		int idx=this.getSearchName(name);
+		if(idx==-1)
+			System.out.println(name+" 님은 사원 명단에 없습니다.");
+		else
+			System.out.println(name+" 님은 "+(idx+1)+" 번째에 있습니다.");
+	}
+	
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		Ex12FileList ex12=new Ex12FileList();
+		ex12.sawonMemberList();
+		
+	}
+
+}

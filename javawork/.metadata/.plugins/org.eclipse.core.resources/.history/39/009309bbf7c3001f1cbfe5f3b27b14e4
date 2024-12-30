@@ -1,0 +1,21 @@
+package day1227;
+
+@FunctionalInterface
+interface MySawon
+{
+	public void sawonAdd(String name);
+}
+
+
+
+
+public class Ex3Lambda {
+	MySawon sawon=(name)->System.out.println(name+"사원 추가함!");
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
