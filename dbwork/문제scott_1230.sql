@@ -3,8 +3,8 @@
 select job, count(job) from emp group by job;
 
 --2. ename에 대소문자 상관없이 's'를 포함하고 있는데이터 출력(컬럼: ename,job,sal) 로어 어퍼
---select ename from emp where ename in('%s%','%S%');
-select ename from emp where 
+--select ename,job,sal from emp where ename like '%s%' or ename like '%S%';
+select ename,job,sal from emp where lower(ename)='%S%';
 
 --3. ename의 3번째 글자가 L인 사람을 조회하시오(컬럼:ename, sal, comm)
 select ename,sal,comm from emp where ename like '__L%';
@@ -14,7 +14,7 @@ select ename, sal, comm from emp where comm not like 'null' and sal>=1500;
 
 --5. hiredate 입사일이 5월인 사람은 모두 출력(컬럼: ename, hiredate,sal)
 --모르겠담
---select ename,hiredate,sal from emp where to_char(to_date(hiredate,'mm'))=(select to_char(to_date('2024-5-10'), 'mm') from dual);
+select ename,to_char(hiredate,'yyyy-mm-dd'),sal from emp where to_char(hiredate,'mm')=05;
 
 --6. hiredate 입사일이 1985-01-01 이후에 입사한 사람 출력(컬럼: ename, hiredate,sal)
 select ename,hiredate, sal from emp group by hiredate;-- having hiredate>='1985-01-01';
