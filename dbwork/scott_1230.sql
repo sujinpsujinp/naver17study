@@ -201,9 +201,3 @@ select to_char(hiredate,'yyyy-mm-dd') 입사일 from emp;
 SELECT TO_CHAR(SYSDATE,'YYYY')||'년'||TO_CHAR(SYSDATE,'MM')||'월' FROM DUAL;
 
 select to_char(hiredate,'yyyy년mm월') 입사일 from emp;--오류 발생
-
-
-
-
-
-
