@@ -90,7 +90,7 @@ select count(*) 총갯수 from emp; --이 경우는 컬럼명이 총갯수
 
 select sal,comm,sal+NVL(comm,0) sum from emp; --sal+NVL(comm,0)열의 컬럼명은 sum으로 변경
 select sal 월급여,comm 커미션,sal+NVL(comm,0) 총금액 from emp;--컬럼명을 한글로
-
+select sal 월급여,NVL(comm,5) 커미션,sal+NVL(comm,0) 총금액 from emp;
 --문자열을 컬럼에 추가 시 || 연산자 사용
 select '내이름은 '||ename||'입니다.' 자기소개 from emp; --자기소개가 빠지면'내이름은 '||ename||'입니다.' 이게 컬럼명이 됨
 --내 직업은 salesman이고 내 월 급여는 1600입니다 라고 컬럼명 "자기소개"에 나오도록 작성
