@@ -213,8 +213,7 @@ accept sangpum PROMPT '상품명을 입력하세요.';
 
 DECLARE
     v_sangpum VARCHAR2(30) :='&sangpum';
-    
-    
+ 
     CURSOR s1
     is
     select * from shop where sangname like '%'||v_sangpum||'%';

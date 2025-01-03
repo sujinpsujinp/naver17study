@@ -242,7 +242,7 @@ DROP TABLE FOOD;--삭제 안됨,자식테이블을 먼저 삭제해야 부모테
 drop table booking;
 drop table food;
 
---sawon table도 일단 삭지
+--sawon table도 일단 삭제
 drop table sawon;
 
 --시퀀스도 일단 모두 삭제
