@@ -1,0 +1,15 @@
+package day0106db;
+
+public class ShopDto {
+	//컬럼명이랑 동일한 이름으로 주는게 좋음
+	private int idx;
+	private String sangpum;
+	private int su;
+	private int danga;
+	
+	public ShopDto() {
+		
+	}
+	
+//using field, setter getter 만들기
+}

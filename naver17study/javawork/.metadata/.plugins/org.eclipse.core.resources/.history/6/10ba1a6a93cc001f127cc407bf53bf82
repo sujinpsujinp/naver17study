@@ -1,0 +1,14 @@
+package day0107db;
+//상단 고정은 패널 왼쪽 food table, 상단 하단 센터 왼쪽
+public class Ex1FoodMysqlDb {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		
+		
+		
+	}
+
+}

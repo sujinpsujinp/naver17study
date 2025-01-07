@@ -1,0 +1,35 @@
+package day0107db;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+//상단 고정은 패널 왼쪽 food table, 상단 하단 센터 왼쪽
+public class Ex1FoodMysqlDb extends JFrame{
+	FoodModel foodModel=new FoodModel();
+	
+	DefaultTableModel foodResTableModel;
+	DefaultTableModel foodOrderTableModel;
+	JTable foodResTable;
+	JTable foodOrderTable;
+	
+	JButton btnFoodResAdd, btnFoodResDel;
+	JButton btnFoodOrderAdd,btnFoodOrderDel;
+	JTextField tfFoodNum,tfOderName,tfOderCnt,tfBookingDay;
+	
+	public Ex1FoodMysqlDb() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Ex1FoodMysqlDb ex1=new Ex1FoodMysqlDb();
+		
+		
+		
+		
+	}
+
+}

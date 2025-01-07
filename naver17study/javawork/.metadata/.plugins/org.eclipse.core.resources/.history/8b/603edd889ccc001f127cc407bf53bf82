@@ -1,0 +1,39 @@
+package day0107db;
+//Db관리하는 곳
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import db.connect.MysqlConnect;
+
+public class FoodModel {
+	MysqlConnect mysqlConnect=new MysqlConnect();
+
+	//메뉴등록 insert 하는 메서드
+	public void foodMenuInsert(String foodName,int foodprice, int foodSize)
+	{
+		//Connection conn=mysqlConnect.getConnection();
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		String sql="insert into foodrest (foodName,foodPrice,foodSize) values (?,?,?)";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			//바인딩
+			pstmt.setString(1,foodName);
+			pstmt.setInt(2, foodprice);
+			pstmt.setInt(3, foodSize);
+			
+			//실행
+			pstmt.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			mysqlConnect.dbClose(pstmt, conn);
+		}
+	}
+
+}

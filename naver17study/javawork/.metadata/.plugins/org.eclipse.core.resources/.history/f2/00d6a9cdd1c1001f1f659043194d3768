@@ -1,0 +1,70 @@
+package day1224;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.List;
+import java.util.Vector;
+
+public class Ex12FileList {
+
+	static final String FILENAME="d:/naver1210/sawon.txt";
+	
+	
+	List<String> sawonList=new Vector<String>();
+	
+	public Ex12FileList() {
+		//파일에서 이름 읽어서 sawonlist에 추가해주세요.
+		//filereadline???
+		
+		FileReader fr=null;
+		BufferedReader br=null;
+		
+		try {
+			fr=new FileReader("d:/naver1210/score.txt");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("파일을 찾았어요.");
+		
+		br=new BufferedReader(fr);//한줄 단위로 읽어오기 위해서
+		
+		int n=0;
+		while(true)
+		{
+			
+			try {
+			String line= br.readLine();
+			if(line==null)//내용이 없으면 나가기
+				break;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+	}
+	
+	public void sawonMemberList()
+	{
+		//사원 이름과 번호를 같이 출력해주세요.
+		int n=0;
+		//for문 사용해서 출력
+		
+		System.out.println(++n+"\t");
+	}
+	
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		Ex12FileList ex12=new Ex12FileList();
+		ex12.sawonMemberList();
+		
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,5 @@
+package day0107db;
+//Db관리하는 곳
+public class FoodModel {
+
+}
