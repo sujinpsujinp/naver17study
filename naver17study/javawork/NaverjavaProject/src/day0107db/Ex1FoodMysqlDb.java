@@ -3,6 +3,8 @@ package day0107db;
 import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -69,11 +71,17 @@ public class Ex1FoodMysqlDb extends JFrame{
 		foodResTable=new JTable(foodResTableModel);
 		this.add("West",new JScrollPane(foodResTable));
 		
+		//생성된 메뉴 테이블에 db데이터 출력
+		writeFoodMenu();
+		
 		//가운데 예약테이블 보이게 하기
 		String []orderTitle= {"번호","예약자명","메뉴명","가격","사이즈","인원수","예약일"};
 		foodOrderTableModel=new DefaultTableModel(orderTitle,0);
 		foodOrderTable=new JTable(foodOrderTableModel);
 		this.add("Center",new JScrollPane(foodOrderTable));
+		
+		//생성된 예약자테이블에 예약내용 출력
+		writeFoodOrderJoin();
 		
 		//하단에 예약내용 입력부분 추가
 		tfOrderName=new JTextField(5);
@@ -136,7 +144,26 @@ public class Ex1FoodMysqlDb extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				//입력값들 읽어오기
+				int num=Integer.parseInt(tfFoodNum.getText());
+				String orderName=tfOrderName.getText();
+				int orderCnt=Integer.parseInt(tfOrderCnt.getText());
+				String bookingDay=tfBookingDay.getText();
 				
+				//dto에 넣어주기
+				FoodOrderDto dto=new FoodOrderDto(num, orderName, orderCnt, bookingDay);
+				
+				//예약 insert 메서드 호출
+				foodModel.foodOrderInsert(dto);
+				
+				//다시 출력하기
+				writeFoodOrderJoin();
+				
+				//입력값 초기화
+				tfFoodNum.setText("");
+				tfOrderName.setText("");
+				tfOrderCnt.setText("");
+				tfBookingDay.setText("");
 			}
 		});
 		
@@ -150,17 +177,33 @@ public class Ex1FoodMysqlDb extends JFrame{
 			}
 		});
 
-	
 	}
 	
 	public void writeFoodMenu()
 	{
-		
+		//db에서 전체 등록된 메뉴를 얻는다.
+		List<Vector<String>> list=foodModel.getAllMenus();
+		//기존 메뉴들 삭제
+		foodResTableModel.setRowCount(0);
+		//table에 출력
+		for(Vector<String> data:list)
+		{
+			foodResTableModel.addRow(data);
+		}
 	}
 	
 	public void writeFoodOrderJoin()
 	{
-		
+		//order 데이터 가져오기
+		List<Vector<String>> list=foodModel.getAllOrders();
+		//기존 데이터 모두 삭제 이거 있어야 추가한 다음 다시 불러옴
+		foodOrderTableModel.setRowCount(0);
+		//table에 데이터 출력
+		for(Vector<String> data:list)
+		{
+			foodOrderTableModel.addRow(data);
+		}
+
 	}
 	
 	
