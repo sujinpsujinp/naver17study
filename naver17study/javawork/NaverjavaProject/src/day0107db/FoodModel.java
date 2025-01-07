@@ -13,10 +13,9 @@ import db.connect.MysqlConnect;
 public class FoodModel {
 	MysqlConnect mysqlConnect=new MysqlConnect();
 
-	//메뉴등록 insert 하는 메서드
+	//메뉴 insert 하는 메서드
 	public void foodMenuInsert(String foodName,int foodprice,String foodSize)
 	{
-		//Connection conn=mysqlConnect.getConnection();
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		String sql="insert into foodrest (foodName,foodPrice,foodSize) values (?,?,?)";
@@ -72,8 +71,6 @@ public class FoodModel {
 		}finally {
 			mysqlConnect.dbClose(rs, pstmt, conn);
 		}
-		
-		
 		return list;
 	}
 
@@ -147,8 +144,6 @@ public class FoodModel {
 		}finally {
 			mysqlConnect.dbClose(rs, pstmt, conn);
 		}
-
-
 		return list;
 	}
 	

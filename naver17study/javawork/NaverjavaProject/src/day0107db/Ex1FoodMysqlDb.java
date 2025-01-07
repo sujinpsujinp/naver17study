@@ -9,6 +9,7 @@ import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -105,7 +106,6 @@ public class Ex1FoodMysqlDb extends JFrame{
 		this.add("South",p2);
 		
 		//버튼 이벤트들
-		
 		//메뉴등록 버튼
 		btnFoodResAdd.addActionListener(new ActionListener() {
 			
@@ -134,6 +134,30 @@ public class Ex1FoodMysqlDb extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				//선택한 행번호 얻기
+				int row=foodResTable.getSelectedRow();//왼쪽에서 선택한 테이블 가져오기
+				//선택 안했을 경우 -1
+				if(row==-1)
+				{
+					JOptionPane.showMessageDialog(Ex1FoodMysqlDb.this, "삭제하려는 메뉴를 선택해주세요");
+					return;//메서드 종료
+				}
+				//선택한 행의 0번열의 num값 얻기
+				int num=Integer.parseInt(foodResTable.getValueAt(row, 0).toString());//getValueAt 반환타입이 object라서 paseint해줌
+				System.out.println(num);//콘솔로 먼저 확인하기
+				
+				//해당 메뉴를 예약한 예약갯수 구하기
+				int cnt=foodModel.getOrderMenuCount(num);
+				//cnt가 0이면 아무도 주문아니했으므로 삭제 가능
+				//그렇지 않으면 메세지 알림
+				if(cnt==0) 				{
+				foodModel.deleteFoodMenu(num);	
+					JOptionPane.showMessageDialog(Ex1FoodMysqlDb.this, "삭제되었습니다.");
+					writeFoodMenu();//전체 메뉴 다시 출력
+				}else {
+					JOptionPane.showMessageDialog(Ex1FoodMysqlDb.this, 
+							"해당 메뉴는 예약자가 있어서 삭제가 안됩니다\n먼저 예약을 취소 후 삭제해주세요.");
+				}
 				
 			}
 		});
@@ -173,7 +197,28 @@ public class Ex1FoodMysqlDb extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-
+				//0번열의 idx값을 얻어서 삭제 후
+				//예약이 취소 되었습니다 알림
+				// 선택안했을 경우 "취소할 데이터를 선택해주세요."
+				
+				//선택한 행번호 얻기
+				int row=foodOrderTable.getSelectedRow();//왼쪽에서 선택한 테이블 가져오기
+				//선택 안했을 경우 -1
+				if(row==-1)
+				{
+					JOptionPane.showMessageDialog(Ex1FoodMysqlDb.this, "취소할 예약번호를 선택해주세요");
+					return;//메서드 종료
+				}
+				//선택한 행의 0번열의 idx값 얻기
+				int idx=Integer.parseInt(foodOrderTable.getValueAt(row, 0).toString());//getValueAt 반환타입이 object라서 paseint해줌
+				System.out.println(idx);//콘솔로 먼저 확인하기
+				
+				//삭제
+				foodModel.deleteOrder(idx);
+				//메세지 알림
+				JOptionPane.showMessageDialog(Ex1FoodMysqlDb.this, "예약이 취소되었습니다.");
+				
+				writeFoodOrderJoin();//예약 테이블 다시 출력
 			}
 		});
 
