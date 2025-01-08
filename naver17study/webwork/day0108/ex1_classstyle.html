@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>/* 이클립스로 넣으면 여러 속성이 더 나오는데 그냥 두면 됨 */
+    /*범용 클래스 - 모든 캐그에 적용하려면 .클래스명*/
+    .happy{
+        font: size 20px;
+        background-color:pink;
+        border:solid 5px green;
+    }
+    /*특정태그에서만 사용가능한 클래스 만들기 */
+    div.hello{/* div에서만 사용할 클래스*/
+        color: orange;
+        background-color: cyan;
+        font-size: 2em;
+        width: 300px;
+    }
+
+    /* id는 #d으로 표현, 아이디는 고유이름이므로 앞에 태그는 안써도 된다. 
+    #ffeeff 는 #fef랑 동일한 색*/
+    #one{
+        border: dotted 2px gray;
+        background-color: #fef;
+    }
+
+    /* two를 주석처리하면  div.java>div 적용된다.*/
+    /* #two{
+        border: dashed green;
+        color: blue;
+        background-color: #ccf;
+    } */
+
+    /* > : 바로 아래 태그, 공백:모든 자식식태그*/
+    div.java>div{
+        font-family: 'Impact';
+        color: red;
+    }
+
+    div.java>b{
+        font-size: 2em;
+        font-style: italic;
+    }
+    </style>
+</head>
+<body>
+    <span style="color:blueviolet;" class="happy">오늘은 수요일입니다.</span><br><br>
+    <b class="happy">Happy Day</b>
+    <u class="happy">Underline style</u>
+    <br>
+    <div class="hello">Hello!</div>
+    <b class="hell">hello class 적용되나요?</b> <!-- 적용안됨 div에서만 되도록 설정해둬서 -->
+    <div class="hello happy">안녕하세요.</div><!-- 여러클래스 적용 시 공백으로 구분 -->
+   
+    <hr><!-- 수평선, 구분선 -->
+    <div>HTML study!!</div>
+    <div id="one">Div ID One</div>
+    <div class="java">
+        Div Class Java
+        <div id="two">
+            Div ID Two
+        </div>
+        <div>
+            div class가 java의 아래태그 div
+        </div>
+        <b>div class가 java의 아래태그 b</b>
+    </div>
+</body>
+</html>

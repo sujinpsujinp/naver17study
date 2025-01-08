@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.two>img{
+            width: 100px;
+            height: 120px;
+            border-style: groove;
+            border-width: 5px;
+            border-color: hotpink;
+        }
+        
+        div.three>img{
+            width: 100px;
+            height: 100px;
+            border:  solid 2px gray;
+            border-radius: 100px;/*모서리에 대한 각도*/
+        }
+
+        div.one>img{
+            /* 4모서리의 각도를 각각 다르게 줄 수도 있다*/
+            border-radius: 10px 20px 30px 40px;
+        }
+
+        #twoloc{
+            position:absolute;/*relative absolute: 절대좌표 */
+            left: 400px;
+            top: 100px;
+            border: solid 2px gray;
+            width: 300px;
+            height: 150px;
+            text-align: center;/*수평방향의 가운데 위치 옮길때 많이 사용*/
+            padding-top: 20px;/*padding: 상단의 안쪽여백 지정, margin: 영역 밖 여백*/
+        }
+
+        div.three>h3{
+            width: 300px;
+            text-align: center;
+            border: inset 4px gold;
+            /* 글자에 대한 그림자*/
+            text-shadow: 3px 3px 3px gray; 
+        }
+
+        div.three{
+            border: solid 5px red;
+            width: 400px;
+            /*해당 요소에 대한 그림자*/
+            box-shadow: 5px 5px 5px orange;
+            /*브라우저 크기를 변경해도 우측 하단으로 고정*/
+            position: fixed;
+            right: 50px;
+            bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h2>imag tag 연습</h2>
+    <div class="one">
+        <!-- 이미지 못찾으면 나오는게 alt속성, 사진을 찾으면 안나옴 -->
+        <!-- title은 마우스오버했을때 나오는 문구 -->
+        <!-- width, heigh는 비율을 유지하려면 하나만주고 단위없음, 스타일시트에서는 단위줘야함 -->
+        <!--border는 검은색만 가능 -->
+        <!-- vspace : 이미지 아래 공백, hspace : 옆에 공백-->
+        <img alt="박보영" src="../photo/12.jpg" title="박보영입니다"
+         width="100" border="5" hspace="20" vspace="20">
+        하늘은 맑고 바람이 좋습니다.<br>
+        오늘 점심은 뭐 먹을까요?
+    </div>
+    <div class="two" id="twoloc">
+        <img alt="수지" src="../photo/19.jpg">
+        <img alt="박신혜" src="../photo/13.jpg">
+    </div>
+    <div class="three">
+        <h3>Shop 제품들</h3>
+        <img alt="" src="../photo2/14.jpg" title="신발들">
+        <img alt="" src="../photo2/30.jpg" title="머리띠">
+    </div>
+</body>
+</html>
+
