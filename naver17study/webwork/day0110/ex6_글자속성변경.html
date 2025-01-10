@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>502study</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+        body *{
+                font-family:'Jua';
+            }
+
+        div.box{
+            width: 300px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="box" style="margin: 30px 100px;">
+            <b style="font-size: 20px; font-family: 'Single Day';">
+                오늘은 즐거운 금요일입니다.
+            </b>
+
+        </div>
+        <div style="margin: 20px 60px;">
+            <button type="button" class="btn btn-info btn-sm" id="btn1">점점작게</button>
+            <button type="button" class="btn btn-info btn-sm" id="btn2">점점크게</button>
+            <button type="button" class="btn btn-info btn-sm" id="btn3">글꼴변경(Jua)</button>
+            <button type="button" class="btn btn-info btn-sm" id="btn4">글자색변경</button>
+            <button type="button" class="btn btn-info btn-sm" id="btn5">배경색변경</button>
+        </div>
+        <script>
+            //글자의 요소 값을 얻어보자
+            let font=document.querySelector("div.box>b");
+
+            //점점작게
+            document.getElementById("btn1").onclick=function(){
+                //내가 짠 코드
+                // let w=parseInt(font.style.fontSize)-5;
+                // font.style.fontSize=w+"px";
+                //선생님이 짠 코드
+                let size=paseInt(font.style.fontSize);
+                //alert(size);
+                size=-2;
+                font.style.fontSize=size+"px";
+            }
+
+            //점점크게
+            document.getElementById("btn2").onclick=function(){
+                //내가 짠 코드
+                //let w=parseInt(font.style.fontSize)+5;
+                //font.style.fontSize=w+"px";
+                //선생님이 짠 코드
+                let size=paseInt(font.style.fontSize);
+                //alert(size);
+                size=+2;
+                font.style.fontSize=size+"px";
+            }
+
+            //글꼴변경
+            document.getElementById("btn3").onclick=function(){
+                //내가 짠코드
+                //font.style.fontFamily="Jua";
+
+                //선생님이 짠 코드
+                //현재 글꼴을 얻는다.
+                let fname=font.style.fontFamily;
+                if(fname=='Jua')
+                    fname="Single Day";
+                else
+                    fname="Jua";
+
+                //글꼴 변경
+                font.style.fontFamily=fname;
+            }
+
+            //글자색변경
+            document.getElementById("btn4").onclick=function(){
+                //내가 만든 코드
+                //b.style.color="orange";
+
+                //선생님이 짠 코드
+                //고정색으로 변경
+                //b.style.color="orange";
+
+                //rgb색으로 변경하는데 랜덤하게
+                //rgb(0~255,0~255,0~255) : 이런식
+                //b.style.color="rgb(255,0,255)";//문자형식으로 해야함
+                //0~255사이의 rgb값을 랜덤하게 얻어보자
+                let r=parseInt(Math.random()*256);
+                let g=parseInt(Math.random()*256);
+                let b=parseInt(Math.random()*256);
+
+                //font.style.color="rgb("+r+","+g+","+b+")";//방법1
+                //방법2 템플릿 리터럴
+                font.style.color=`rgb(${r},${g},${b})`;
+            }
+
+            //배경색 변경
+            //글자색변경
+            document.getElementById("btn5").onclick=function(){
+                let r=parseInt(Math.random()*256);
+                let g=parseInt(Math.random()*256);
+                let b=parseInt(Math.random()*256);
+                //font.style.backgroundColor="orange";
+                
+                //b태그의 배경색 변경
+                //font.style.backgroundColor=`rgb(${r},${g},${b})`;
+                
+                //div.box의 배경색 변경
+                document.querySelector("div.box").style.backgroundColor=`rgb(${r},${g},${b})`;
+            }
+        </script>
+    </body>
+</html>

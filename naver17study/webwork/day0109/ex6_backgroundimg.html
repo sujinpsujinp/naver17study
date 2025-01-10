@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>ex6_backgroundimg</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            border:  1px solid black;
+            margin: 10px;
+            float: left;
+        }
+        #one{
+            background-image: url(../mycar/mycar13.png);
+            /*기본값이 repeat, 정해진 공간보다 이미지가 작으면 반복됨*/
+            background-size: 100px 100px;
+            background-repeat: no-repeat;
+            background-position: right bottom;
+        }
+
+        #two{
+            background: url(../mycar/mycar7.png);
+            background-size: 200px 170px;
+        }
+
+        #three{
+            background: url(../mycar/mycar7.png) center center;
+            /*배경이미지가 클 경우 잘리더라도 주어진 영역을 완전히 덮을 수 있도록 맞춰줌*/
+            background-size: cover;
+        }
+
+        #four{
+            background: url(../mycar/mycar7.png) no-repeat center center;
+            /*빈공간이 생기더라도 이미지 전체(비율이 깨지지않게)가 나오게 해준다.*/
+            /*단 repeat하면 안됨!!*/
+            background-size: contain;
+        }
+    </style>
+</head>
+<body>
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
+    <div id="four"></div>
+</body>
+</html>

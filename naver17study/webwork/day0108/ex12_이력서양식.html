@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+    <style>
+        table.td1{
+            width: 700px;
+            height: 80px;
+            margin: 10px;
+            border-collapse: collapse;
+            border: double 3px black;
+            text-align: center;
+            font-size: 50px;
+            color: white;
+            background-color: coral;
+        }
+
+        table.tb2{
+            margin: 10px;
+            width: 700px;
+            height: 80px;
+            border-collapse: collapse;
+            border: solid 3px black;
+            text-align: center;
+        }
+        table.tb2 td{
+            width: 15px;
+            border: dotted 2px gray;
+        }
+        table.tb3{
+            width: 700px;
+            margin: 10px;
+            border-collapse: collapse;
+            border: solid 3px black;
+        }
+        table.tb3 th,td{
+            width: 15px;
+            
+            border: dotted 2px black;
+        }
+        table.tb4{
+            margin: 10px;
+            width: 700px;
+            border-collapse: collapse;
+            border: solid 2px black;
+        }
+        
+        table.tb4 th{
+            text-align: center;
+            background-color: orange;
+            border: dotted 1px black;
+        }
+
+    </style>
+</head>
+<body>
+    <table class="td1">
+        <!-- &nbsp; 공백칸 -->
+        <tr>
+            <td><b>이&nbsp;&nbsp;력&nbsp;&nbsp;서</b></td>
+        </tr>
+    </table>
+    <table class="tb2">
+        <tr>
+            <th width="20">지원구분</th>
+            <td >신입(&nbsp;&nbsp;)/경력(&nbsp;&nbsp;)</td>
+            <th width="20">지원구분</th>
+            <td></td>
+            <th width="20">희망연봉</th>
+            <td> 만원</td>
+        </tr>
+    </table>
+    <table class="tb3">
+        <tr>
+            <!-- rowspan: 여러행 합치기, colspan:여러열합치기기 -->
+            <td rowspan="5" align="center" > 사진 </td>
+            <th bgcolor="orange">성 명</th>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <th bgcolor="orange">영문</th>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        </tr>
+        <tr>
+            <th bgcolor="orange">생년월일</th>
+            <td> </td>
+            <th bgcolor="orange">성별</th>
+            <td>남(&nbsp;&nbsp;)/여(&nbsp;&nbsp;)</td>
+        </tr>
+        <tr>
+            <th bgcolor="orange">현주소</th>
+            <td colspan="4"></td>
+        </tr>
+        <tr>
+            <th bgcolor="orange">연락처</th>
+            <td colspan="3">  </td>
+        </tr>
+        <tr>
+            <th bgcolor="orange">이메일</th>
+            <td colspan="3"> </td>
+        </tr>
+    </table>
+    <table class="tb4">
+        <tr>
+            <th width="10", rowspan="4">학력사항</th>
+            <th width="80">기간</th>
+            <th width="80">학교명</th>
+            <th width="80">전공</th>
+            <th width="80">학점</th>
+        </tr>
+        <tr>
+            <td align="center">&nbsp;&nbsp;-&nbsp;&nbsp;</td>
+            <td align="right">고등학교</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;/&nbsp;&nbsp;</td>
+        </tr>
+        <tr>
+            <td align="center">&nbsp;&nbsp;-&nbsp;&nbsp;</td>
+            <td align="right">대학교</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;/&nbsp;&nbsp;</td>
+        </tr>
+        <tr>
+            <td align="center">&nbsp;&nbsp;-&nbsp;&nbsp;</td>
+            <td align="right">대학원</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;/&nbsp;&nbsp;</td>
+        </tr>
+    </table>
+
+
+</body>
+</html>
