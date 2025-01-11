@@ -9,55 +9,38 @@
         <style>
         body *{
                 font-family:'Jua';
+                background-color: #e6c499;
             }
         </style>
     </head>
     <body>
         <h4 class="alert alert-danger">table을 이용해서 2~9단 전체 구구단을 출력하시오.</h4>
         <div class="alert alert-success">구구단</div>
-        <div class="gugu">출력</div>
         <script>
-            
-
             window.onload=function(){
-               
                 let s=`
-                <table class="table table-borderd" style="width:200px;"> `;
+                <table class="table table-borderd";> 
+                    <tr>`;
             for(let dan=2;dan<=9;dan++){
                 s+=`
-                <tr>
-                    <td style="background-color:orange;" align="center">${dan}단</td>
-                `};
+                    <td align="center"  style="background-color: antiquewhite;">${dan}단</td>
+                `;
+            }
+            s+=`</tr><tr>`
                 for(let i=1;i<=9;i++){
                     for(let j=2;j<=9;j++){
                  s+=`
-                     <tdalign="center">${j}X${i}=${j*i}</td>
+                     <td align="center" style="background-color=#e6c499">${j}X${i}=${j*i}</td>
                  
-                 `}}
-
-            
-                
-            s+="</tr></table>";
-
-            document.querySelector("div").innerHTML=s;
-
-        //     for(int i=2;i<=9; i++)
-		// 	System.out.print("["+i+"단]\t");
-		// System.out.println();
-		// System.out.println("=".repeat(65));
-		
-		// for(int j=1;j<=9;j++) 
-		// {
-		// 	for(int dan=2;dan<=9;dan++)
-		// 	{
-		// 		System.out.print(dan+"X"+j+"="+dan*j+"\t");	
-		// 		//System.out.print(j+"X"+dan+"="+dan*j+"\t");
-		// 	}
-		// System.out.println();
-		// }        
-
+                 `;
+                }
+                s+=`</tr>`;  
+            }
+            s+="</table>";
+            document.querySelector("div").innerHTML=s;       
         }
+        //단에서 for문 따로 guguhtml 뭔가 바로 나오는게 있는것 같은뎀...
+        //밑에 형식 줄줄 니오는 이중포문 있고
         </script>
-    
     </body>
 </html>
