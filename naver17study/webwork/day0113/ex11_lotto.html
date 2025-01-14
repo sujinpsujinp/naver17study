@@ -39,9 +39,9 @@
             window.onload=function(){
                 let lotto=document.querySelectorAll(".mylotto>.lotto");
                 lotto[1].style.backgroundColor="#db7093";
-                lotto[2].style.backgroundColor="#48d1cc";
-                lotto[4].style.backgroundColor="#eee8aa";
-                lotto[4].style.color="black";
+                lotto[3].style.backgroundColor="#48d1cc";
+                lotto[5].style.backgroundColor="#eee8aa";
+                lotto[5].style.color="black";
 
                 //버튼 이벤트
                 document.querySelector("#btnlotto").onclick=function(){
@@ -49,15 +49,14 @@
                     //6개 크기의 배열 선언
                      let num=new Array(6);
 
-                    // //배열의 중복되지 않은 1~45의 난수 구하기
-                     let r=parseInt(Math.random()*45)+1;
+                    //배열의 중복되지 않은 1~45의 난수 구하기
                     for(let i=0;i<num.length;i++){
-                        num[i]=r;
+                        num[i]=parseInt(Math.random()*45)+1;//1~45사이의 난수
                         //중복제거
                         for(let j=0;j<i;j++){
                             if(num[i]==num[j])
                             {
-                                i--;
+                                i--;//다시 같은번지를 구하기위해서 
                                 break;
                             }
                         }
@@ -74,7 +73,13 @@
                      }
 
                     //위의 변수 lotto에 정렬된 숫자를 넣어준다. innertext, innerhtml로 넣어주기
-                    document.querySelector("#btnlotto").innerHTML+=lotto;   
+                    //출력문은 for문을 사용해서
+                    for (let i = 0; i < num.length; i++) {
+                    //이건 재희님이 도와줘서 짠 코드
+                    //document.querySelectorAll(".mylotto>.lotto")[i].innerHTML=`${num[i]}`;  
+                    //선생님이 알려주신 것    
+                    lotto[i].innerHTML=num[i];
+                    } 
                 }
             }
         </script>
