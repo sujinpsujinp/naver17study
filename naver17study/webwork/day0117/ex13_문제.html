@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>502study</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+        <style>
+            body *{
+                font-family:'Jua';
+            }
+           div.place{
+            width: 700px;
+           }
+            div.box>figure{
+                float: left;
+                margin-right: 20px;
+                border: 2px solid gray;
+                padding: 10px;
+                border-radius: 30px ;
+            }
+
+            div.box>figure>i{
+                position: absolute;
+                font-size: 30px;
+                color: red;
+            }
+            div.box>figure>img{
+                width: 100px;
+                height: 100px;
+                border-radius: 20px ;
+            }
+
+            div.box>figure>figcaption{
+                /*position: absolute;*/
+                text-align: center;
+            }
+
+            div.box>figure>.del2{
+                color: red;
+                cursor: pointer;
+                font-size: 2em;
+                position: relative;
+                /*bottom left해서 줘보기*/
+                left: 30px;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div class="place">
+            <h3>선택한 상품 삭제하기</h3>
+            <button type="button" class="btn btn-danger del1">선택한 상품 삭제하기</button>
+            <div class="result" style="font-size: 20px;margin: 20px 50px;"></div>
+                <div class="box"></div>
+        <script>
+            let pho=[
+                {"img":"../photo2/25.jpg"},
+                {"img":"../photo2/26.jpg"},
+                {"img":"../photo2/27.jpg"},
+                {"img":"../photo2/28.jpg"},
+                {"img":"../photo2/29.jpg"},
+                {"img":"../photo2/30.jpg"},
+                {"img":"../photo2/31.jpg"},
+                {"img":"../photo2/32.jpg"},
+                {"img":"../photo2/33.jpg"},
+                {"img":"../photo2/21.jpg"}
+            ];
+
+            let s="";
+            $.each(pho,(idx,item)=>{
+                s+=`
+                <figure>
+                    <i class="bi bi-x-circle del2"></i>
+                    <img src="${item.img}">
+                    <figcaption>
+                        <input type="checkbox" class="chk" value="delete">삭제
+                    </figcaption>
+                </figure>
+                `;
+            });
+            $("div.box").html(s);
+
+            $(".del2").click(function(){
+                $(this).parent().remove();
+            });
+
+            $(".del1").click(function(){
+                let s="";
+                let len=$(".chk:checked").length;
+                if(len==0)
+                    s+="선택된 항목이 없습니다<br>";
+                else{
+                    $(".chk").each(function(idx,ele){
+                        if($(this).is(":checked"))
+                            $(this).parent().parent().remove();
+                    });
+                }
+                $("div.result").html(s);
+            });
+        </script>
+            </div>
+        </div>    
+    </body>
+</html>

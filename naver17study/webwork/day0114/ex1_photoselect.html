@@ -65,14 +65,14 @@
         </div>
         <script>
             //class="small" 인 요소값을 배열 형태로 얻기
-            let small=document.getElementsByClassName("#small");
+            let small=document.getElementsByClassName("small");
 
             //for문에서 small에 마우스르 올리면 src값을 얻어서
             //large의 src에 넣어준다.
             for(let s of small){
                 s.onmouseover=function(){
                     let smallphoto=this.getAttribute("src");
-                    document.querySelector(".large").setAttribute("src".smallphoto);
+                    document.querySelector(".large").setAttribute("src",smallphoto);
                     
                     console.log(this.parentElement.childNodes);//figcaption:3
                     let a=this.parentElement.childNodes[3].firstChild.nodeValue;
