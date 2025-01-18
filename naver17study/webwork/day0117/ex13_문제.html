@@ -21,21 +21,27 @@
                 border: 2px solid gray;
                 padding: 10px;
                 border-radius: 30px ;
+                position: relative;
+                text-align: center;
+                
             }
 
             div.box>figure>i{
                 position: absolute;
-                font-size: 30px;
+                font-size: 20px;
                 color: red;
+                top: 10px;
+                
             }
             div.box>figure>img{
                 width: 100px;
                 height: 100px;
                 border-radius: 20px ;
+                display: block;
+                margin: 0 auto; 
             }
 
             div.box>figure>figcaption{
-                /*position: absolute;*/
                 text-align: center;
             }
 
@@ -45,7 +51,7 @@
                 font-size: 2em;
                 position: relative;
                 /*bottom left해서 줘보기*/
-                left: 30px;
+                left: 2px;
             }
 
 
@@ -93,7 +99,8 @@
                 let s="";
                 let len=$(".chk:checked").length;
                 if(len==0)
-                    s+="선택된 항목이 없습니다<br>";
+                    alert("선택된 항목이 없습니다");
+                    //s+="선택된 항목이 없습니다<br>";
                 else{
                     $(".chk").each(function(idx,ele){
                         if($(this).is(":checked"))
