@@ -11,9 +11,119 @@
             body *{
                 font-family:'Jua';
             }
+
+            .line1{
+                border: 10px groove orange;
+                width: 300px;
+                height: 100px;
+                background-color: pink;
+            }
+
+            .line2{
+                border: 10px dotted green;
+                width: 200px;
+                height: 200px;
+                background-color: lightcyan;
+            }
+
+            .bg1{
+                width: 300px;
+                height: 300px;
+                background: url(../mycar/mycar11.png) no-repeat center center;
+                background-size: 250px 200px;
+                background-color: lightcyan;
+            }
+
+            .style1{
+                font-size: 30px;
+                text-align: center;
+                color: blue;
+                font-family: 궁서체;
+            }
+
+            .photostyle{
+                border: 10px groove orange;
+                box-shadow: 5px 5px 5px gray;
+            }
         </style>
     </head>
     <body>
+        <!--
+        addClass("클래스명"): 요소값에 해당 클래스 추가
+        removeClass("클래스명"):요소에 있던 클래스를 제거
+        removeClass():요소에 적용되었던 모든 클래스를 제거
+        toggle("클래스명"): 해당 클래스가 추가-제거를 반복
+        -->
+        <button type="btn btn-outline-success btn-sm" id="btn1">line1만 적용</button>
         
+        <button type="btn btn-outline-success btn-sm" id="btn2">line2,bg1 적용</button>
+        
+        <button type="btn btn-outline-success btn-sm" id="btn3">line1,style1 적용</button>
+        
+        <button type="btn btn-outline-success btn-sm" id="btn4">line2,style1 적용</button>
+        
+        <button type="btn btn-outline-success btn-sm" id="btn5">모두 제거</button>
+
+        <br><br>
+        <div class="box">Good Day!!</div>
+
+        <script>
+            $("#btn1").click(function(){
+                //기존에 추가된 클래스 제거
+                $("div.box").removeClass("line srtyle bg1");
+                $("div.box").addClass("line1");
+            });
+
+            $("#btn2").click(function(){
+                $("div.box").removeClass("line1 style1");
+                $("div.box").addClass("line2");
+                $("div.box").addClass("bg1");
+            });
+
+            $("#btn3").click(function(){
+                $("div.box").removeClass("line2 bg1");
+                $("div.box").addClass("line1").addClass("style1");
+            });
+
+            $("#btn4").click(function(){
+                $("div.box").removeClass("bg1").addClass("line2 style1");
+            });
+
+            $("#btn5").click(function(){
+                $("div.box").removeClass();//모두제거
+            });
+        </script>
+        <hr>
+        <img src="../photo/13.jpg" width="200" class="photo">
+
+        <script>
+            // $(".photo").hover(function(){
+            //     $(this).addClass("photostyle");
+            // },function(){
+            //     $(this).removeClass("photostyle");
+            // });
+
+            $(".photo").hover(function(){
+                //over,out 시 같은 함수 호출
+                $(this).toggleClass("photostyle");
+            });
+        </script>
+        <hr>
+        <img src="../mycar/mycar15.png" width="200" class="photo2">
+
+        <script>
+            $(".photo2").hover(function(){
+                //BS5의 클래스도 추가 가능
+                $(this).toggleClass("img-thumbnalil rounded-circle");
+            });
+        </script>
+        <hr>
+        <h3 class="today">오늘은 목요일입니다</h3>
+        
+        <script>
+            $("h3.today").hover(function(){
+                $(this).toggleClass("alert alert-danger");
+            });
+        </script>
     </body>
 </html>
