@@ -13,6 +13,30 @@
         </style>
     </head>
     <body>
-        
+        <script>
+            let arr=["red","orange","green","pink","gray"];
+            let arrnum=[3,6,7,10,20];
+
+            let a1=arr.map(function(item){
+                return item;
+            });
+            console.log(a1);
+
+            let a2=arr.map((item,idx)=>`<h6>${idx}:${item}</h6>`);
+            document.write(a2);
+            console.log(a2);
+
+            let a3=arrnum.map(function(n,i){
+                console.log(`${i}:${n}`);
+                return n*2;
+            });
+
+            document.write(a3);
+            document.write("<br>");
+            
+            //화살표 함수로 변경
+            let a4=arrnum.map(n=>n*2);
+            document.write(a4);
+        </script>
     </body>
 </html>

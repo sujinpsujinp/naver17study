@@ -3,6 +3,9 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="false"/>
 	<list key="searchhistory">
+		<item value="toUpperCase"/>
+		<item value="Upper"/>
+		<item value="upper"/>
 		<item value="rowSelect"/>
 		<item value="FileWriter"/>
 		<item value="setSawonName"/>
