@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>502study</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+        <style>
+            body *{
+                font-family:'Jua';
+            }
+
+            div.mytooltip{
+                position: absolute;
+                line-height: 1.5;
+                color: black;
+                width: 200px;
+                background-color: #f90;
+                border: 2px solid white;
+                padding: 10px;
+                font-size: 14px;
+                border-radius: 30px;
+                opacity: 0.8;
+                display: none;
+            }
+        </style>
+        <script>
+            $(function(){
+                $("a").bind({
+                    mousemove:function(e){
+                        $("div.mytooltip").css({
+                            "left":e.pageX+"px",
+                            "top":e.pageY+"px"
+                        });
+                    },
+                    mouseover:function(e){
+                        $("div.mytooltip").fadeIn('fast');
+
+                        $("div.mytooltip").html(`
+                        Java<br>HTML<br>SpringBoot<br>MySQL`).css("background-color","#f90");
+                    },
+                    mouseout:function(e){
+                        $("div.mytooltip").fadeOut('fast');
+                    },
+                });
+
+                //이벤트2
+                $("b.view").bind({
+                    mousemove:function(e){
+                        $("div.mytooltip").css({
+                            "left":e.pageX+"px",
+                            "top":e.pageY+"px"
+                        });
+                    },
+                    mouseover:function(e){
+                        let text=$(this).text();
+                        let color=$(this).attr("color");
+                        $("div.mytooltip").text(text).css("background-color",color);
+                        $("div.mytooltip").fadeIn('slow');
+                    },
+                    mouseout:function(e){
+                        $("div.mytooltip").fadeOut('slow');
+                    },
+                });
+
+                //이벤트3
+                $("ol.today li").bind({
+                    mousemove:function(e){
+                        $("div.mytooltip").css({
+                            "left":e.pageX+"px",
+                            "top":e.pageY+"px"
+                        });
+                    },
+                    mouseover:function(e){
+                        let fname=$(this).text();
+                        let photo=$(this).attr("photo");
+                        $("div.mytooltip").html(`
+                        <h6>${fname}</h6>
+                        <img src="${photo}" width=100 border"1">
+                        `).show();
+                    },
+                    mouseout:function(e){
+                        $("div.mytooltip").hide();
+                    },
+                });
+            });
+        </script>
+    </head>
+    <body>
+     <div class="mytooltip">
+        Java<br>
+        HTML5<br>
+        SpringBoot<br>
+        MySQL
+     </div>
+     
+     <a style="font-size: 25px;cursor: pointer;">
+        공수처, 오늘 부장·평검사 최대 8명 뽑는다…윤 탄핵사태에 임명은 기약없어
+     </a>
+     <hr>
+     <pre style="font-size: 15px;">
+        [마이데일리 = 이승길 기자] 그룹 러블리즈 출신 가수 겸 방송인 미주(이미주, 30)와 축구선수 송범근(27)이 공개연애 9개월 만에 결별했다. 두 사람은 각자의 소셜미디어 계정에서 서로의 흔적을 지우는 것으로 이별을 공식화했다.
+
+20일 마이데일리 취재 결과, <b class="view" color="pink">미주와 송범근이 최근 결별했다.</b> 두 사람을 잘 아는 관계자는 "미주와 송범근이 이별했다. 예쁘게 사랑을 했지만, 공개열애가 부담스러운 건 어쩔 수 없었다. 이별을 했지만 서로를 응원하는 관계가 되기로 했다"고 전했다.
+
+마이데일리의 보도 이후 <b class="view" color="yellow"> 소속사 안테나 </b>측은 "아티스트 사생활에 관해서는 확인이 어려운 점 양해 부탁드린다"며 말을 아꼈다. 하지만 이별의 흔적은 SNS에서 찾아볼 수 있었다.
+
+당초 미주와 송범근의 열애가 알려진 배경에는 럽스타그램이 자리하고 있었다. 송범근과 미주가 여행지 같은 장소에서 서로를 찍어준 듯한 사진을 업로드하며 공공연하게 열애 사실을 인증했기 때문.
+
+특히 일본에서의 데이트 사진 등은 화제를 모았다. 송범근이 "맛있네요"라며 게시물을 남기자 미주는 "맛있어? 한입만"이라고 댓글을 달기도. 하지만 결별 보도 이후 이와 같은 <b class="view" color="lightgray">'럽스타그램'</b>은 사라졌다.
+     </pre>
+     <hr>
+     <ol class="today">
+        <li photo="../food/1.jpg">에그샌드위치</li>
+        <li photo="../food/11.jpg">망고빙수</li>
+        <li photo="../food/2.jpg">닭꼬치</li>
+        <li photo="../mycar/mycar13.png">분홍자동차</li>
+        <li photo="../mycar/mycar11.png">노랑자동차</li>
+     </ol>
+    </body>
+</html>
