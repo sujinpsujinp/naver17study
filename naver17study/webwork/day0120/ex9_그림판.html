@@ -29,15 +29,17 @@
             }
         </style>
         <script>
+            //ctx 전역변수
+            let ctx;
             $(function(){
                 let draw=false;//마우스 클릭 시 true,true일 동안만 그림그리기위한 변수
                 let can=document.getElementById("can");
-                let ctx=can.getContext("2d");
+                ctx=can.getContext("2d");
                 let preX,preY;//마우스 이동 시 직전좌표를 저장할 변수
                 //초기펜 색상
                 ctx.strokeStyle='black';
                 //초기펜 굵기
-                ctx.lineWidth=3;
+                ctx.lineWidth=5;
                 //선의 끝모양-선과 선을 이어서 곡선처럼 보이게 하는데 끝부분을
                 //부드럽게 이어져보이게 하는 효과
                 ctx.lineCap="round";
@@ -103,5 +105,24 @@
         <div style="background-color: firebrick;"></div>
         <div style="background-color: khaki;"></div>
      </div>
+     <hr style="clear: both;">
+     <button type="button" id="btn1">화면 초기화</button>
+     <button type="button" id="btn2">지우개</button>
+     <button type="button" id="btn3">별도보관</button>
+     <hr class="save">
+
+     <script>
+        $("#btn1").click(function(){
+            ctx.clearRect(0,0,500,500);
+        });
+        $("#btn2").click(function(){
+            //선색을 흰색으로
+            ctx.strokeStyle="#fff";
+        });
+        $("#btn3").click(function(){
+            let myimg=`<img src="${can.toDataURL()}">`;
+            $("hr.save").after(myimg);
+        });
+     </script>
     </body>
 </html>
