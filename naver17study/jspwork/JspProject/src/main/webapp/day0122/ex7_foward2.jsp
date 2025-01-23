@@ -22,8 +22,8 @@
 	//request에 저장된 list를 얻어보자
 	List<String> list=(List<String>)request.getAttribute("list");
 
-//foward 로 이동한 경우 request 가 그대로 유지되므로
-//list를 가져올 수 있다
+	//foward 로 이동한 경우 request 가 그대로 유지되므로
+	//list를 가져올 수 있다
 	if(list==null)
 		out.print("<h1>list가 없어요</h1>");
 	else{

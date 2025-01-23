@@ -60,8 +60,7 @@
 			s+="입니다";
 			%>
 			<b><%=s %></b><br>
-	<%}
-	%>
+	<%}%>
 	
 	좋아하는 음식 : <img src="../image/food/<%=myfood %>" width="100" height="100"
 	border="1"><br>
