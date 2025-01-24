@@ -28,17 +28,42 @@
        		margin-right:10px;
        }
   	</style>
+  	<script>
+  	$(function() {
+		//검색 버튼 이벤트
+		$("#btnsearch").click(function() {
+			let search=$("#search").val();
+			//목록파일로 이동-검색 단어는 get방식으로 전달
+			location.href="./sawonlist.jsp?search="+search;
+		});
+		
+		//검색단어를 입력 후 엔터를 누르면 검색하기
+		$("#search").keyup(function(e) {
+			if(e.keyCode==13)
+			{
+				//검색버튼 클릭 이벤트 강제 호출
+				$("#btnsearch").trigger("click");
+			}
+		});
+		
+	});
+  	</script>
 </head>
 <%
+	//검색단어 search 읽기
+	//sawonlist.jsp를 직접 실행시에는 search라는 name값이 안넘어옴
+	//이 경우에는 search 변수 값은 null이 된다
+	String search=request.getParameter("search");
+
 	//dao 생성
 	SawonDao dao=new SawonDao();
 	
 	//전체 데이터 가져오기
-	List<SawonDto> list=dao.getAllDatas();
+	List<SawonDto> list=dao.getAllDatas(search);
 %>
 <body>
 <div style="margin:30px;">
-	<table class="tab table table-bordered" style="width:450px;">
+	<table class="tab table table-bordered" style="width:500px;">
 		<caption align="top">
 			<b>[사원목록(<%=list.size() %>명)]</b>
 			
@@ -46,6 +71,20 @@
 			style="float:right;"
 			onclick="location.href='./sawonform.jsp'">사원등록</button>
 		</caption>
+		<tr> 
+			<td colspan="4">
+			<div class="input-group">
+				<b>이름검색</b>&nbsp;&nbsp;
+				<i class="bi bi-search"></i>
+				&nbsp;&nbsp;
+				<input type="text" id="search" placeholder="검색할 이름 입력"
+				class="form-control">
+				&nbsp;&nbsp;
+				<button type="button" class="btn btn-info btn-sm"
+				id="btnsearch">검색</button>
+			</div>
+			</td>
+		</tr>
 		<tr>
 			<th width="50">번호</th>
 			<th width="150">사원명</th>

@@ -54,6 +54,34 @@
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	%>
 	<h5>등록일 : <%=sdf.format(dto.getWriteday()) %></h5>
+	<br><br><br><br>
+</div>
+<div style="margin-left:50px;">
+	<button type="button" class="btn btn-sm btn-outline-secondary"
+	onclick="location.href='./sawonform.jsp'">사원등록</button>
+	
+	<button type="button" class="btn btn-sm btn-outline-secondary"
+	onclick="location.href='./sawonlist.jsp'">사원목록</button>
+	
+	<button type="button" class="btn btn-sm btn-outline-secondary"
+	onclick="location.href='./updateform.jsp?num=<%= dto.getNum() %>'">정보수정</button>
+
+	<%-- <button type="button" class="btn btn-sm btn-outline-secondary"
+	onclick="location.href='./sawondel.jsp?num=<%= dto.getNum()%>'">사원삭제</button> --%>
+
+	<button type="button" class="btn btn-sm btn-outline-secondary"
+	onclick="delfunc(<%=dto.getNum()%>)">사원삭제</button>
+	
+	<script type="text/javascript">
+		function delfunc(num) {
+			//alert(num);
+			let ans=confirm("현재 사원을 DB에서 삭제합니다");
+			if(ans){
+				location.href="./sawondel.jsp?num="+num;//파일 이동
+			}
+		}
+	</script>
+	
 </div>
 </body>
 </html>

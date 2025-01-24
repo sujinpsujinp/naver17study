@@ -12,14 +12,19 @@ import db.connect.MysqlConnect;
 public class SawonDao {
 	MysqlConnect connect=new MysqlConnect();
 	
-	public List<SawonDto> getAllDatas()
+	public List<SawonDto> getAllDatas(String search)
 	{
 		List<SawonDto> list=new Vector<SawonDto>();
 		
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		String sql="select * from sawon order by num";
+		String sql="";
+		
+		if(search==null || search.equals(""))
+			sql="select * from sawon order by num";
+		else
+			sql="select * from sawon where sname like '%"+search+"%' order by num";
 		
 		conn=connect.getConnection();//db연결
 		try {
@@ -79,9 +84,7 @@ public class SawonDao {
 			e.printStackTrace();
 		}finally {
 			connect.dbClose(pstmt, conn);
-		}
-		
-		
+		}		
 	}
 
 	public SawonDto getSawon(String num)
@@ -120,7 +123,61 @@ public class SawonDao {
 		return dto;
 	}
 	
+	public void deleteSawon(String num)
+	{
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		
+		String sql="""
+				delete from sawon where num=?
+				""";
+		conn=connect.getConnection();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			//바인딩
+			pstmt.setString(1,num);
+			
+			pstmt.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			connect.dbClose(pstmt, conn);
+		}		
+	}
 	
+	public void updateSawon(SawonDto dto)
+	{
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+
+		String sql="""
+				update sawon set sname=?,sphoto=?,ipsaday=?,
+				sbirth=?,sblood=? where num=?
+				""";
+
+		conn=connect.getConnection();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			//바인딩 6개
+			pstmt.setString(1, dto.getSname());
+			pstmt.setString(2, dto.getSphoto());
+			pstmt.setString(3, dto.getIpsaday());
+			pstmt.setInt(4, dto.getSbirth());
+			pstmt.setString(5, dto.getSblood());
+			pstmt.setInt(6, dto.getNum());
+
+			//실행
+			pstmt.execute();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			connect.dbClose(pstmt, conn);
+		}
+	}
 	
 	
 	
