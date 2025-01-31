@@ -27,6 +27,7 @@
        
        figure.b{
        	width:250px;
+       	height:350px;
        	float:left;
        	margin:10px;
        }
@@ -94,10 +95,10 @@
   						<figure class="b">
   							<img src="${item.img}">
   							<figcaption>
-  								<a style="color:lightgray;font-size:12px;">${item.company}</a><br>
-  								<a style="color:gray;font-size:15px;">${item.title}</a><br>
-  								<span style="color:cyan ;">${item.sale}</span>&nbsp;
-  								<span style="font-size:20px;">${item.price}</span></b>
+  								<span style="color:lightgray;font-size:11px;">${item.company}</span><br>
+  								<span style="color:gray;font-size:15px;">${item.title}</span><br>
+  								<span style="color:cyan;">${item.sale}</span>&nbsp;
+  								<b style="font-size:20px;">${item.price}</b>
   							</figcaption>
   						</figure>
   					`;				
@@ -116,6 +117,7 @@
 <hr style="clear:both;">
 <div class="result2">222</div>
 <hr style="clear:both;">
+<h5 class="alert alert-info">PostingData.json 데이터 읽기</h5>
 <div class="result3">333</div>
 </body>
 </html>

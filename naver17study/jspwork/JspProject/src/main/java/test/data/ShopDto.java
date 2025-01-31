@@ -4,7 +4,16 @@ public class ShopDto {
 	private String sang;
 	private int su;
 	private int dan;
+	private String ipgoday;
 	
+	public String getIpgoday() {
+		return ipgoday;
+	}
+
+	public void setIpgoday(String ipgoday) {
+		this.ipgoday = ipgoday;
+	}
+
 	public ShopDto() {
 		
 	}
