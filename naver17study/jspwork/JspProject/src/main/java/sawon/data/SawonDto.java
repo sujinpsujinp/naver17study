@@ -6,16 +6,17 @@ public class SawonDto {
 	private int num;
 	private String sname;
 	private String sphoto;
+	private String ipsaday;
+	private int sbirth;
+	private String sblood;
+	private Timestamp writeday;
+	
 	public String getSphoto() {
 		return sphoto;
 	}
 	public void setSphoto(String sphoto) {
 		this.sphoto = sphoto;
 	}
-	private String ipsaday;
-	private int sbirth;
-	private String sblood;
-	private Timestamp writeday;
 	public int getNum() {
 		return num;
 	}

@@ -1,36 +1,19 @@
 package test.data;
 
+import java.sql.Timestamp;
+
 public class ShopDto {
-	private String sang;
+	private String sangpum;
 	private int su;
-	private int dan;
-	private String ipgoday;
-	
-	public String getIpgoday() {
-		return ipgoday;
+	private int danga;
+	private Timestamp ipgoday;
+
+	public String getSangpum() {
+		return sangpum;
 	}
 
-	public void setIpgoday(String ipgoday) {
-		this.ipgoday = ipgoday;
-	}
-
-	public ShopDto() {
-		
-	}
-
-	public ShopDto(String sang, int su, int dan) {
-		super();
-		this.sang = sang;
-		this.su = su;
-		this.dan = dan;
-	}
-
-	public String getSang() {
-		return sang;
-	}
-
-	public void setSang(String sang) {
-		this.sang = sang;
+	public void setSangpum(String sangpum) {
+		this.sangpum = sangpum;
 	}
 
 	public int getSu() {
@@ -41,11 +24,21 @@ public class ShopDto {
 		this.su = su;
 	}
 
-	public int getDan() {
-		return dan;
+	public int getDanga() {
+		return danga;
 	}
 
-	public void setDan(int dan) {
-		this.dan = dan;
+	public void setDanga(int danga) {
+		this.danga = danga;
 	}
+
+	public Timestamp getIpgoday() {
+		return ipgoday;
+	}
+
+	public void setIpgoday(Timestamp ipgoday) {
+		this.ipgoday = ipgoday;
+	}
+	
+	
 }

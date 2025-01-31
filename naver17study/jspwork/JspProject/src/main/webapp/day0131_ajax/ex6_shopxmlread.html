@@ -11,6 +11,7 @@
        body *{
           font-family:'Jua';
        }
+       
   	</style>
   	<script type="text/javascript">
   	$(function(){
@@ -25,26 +26,25 @@
   			url:"./shoptoxml.jsp",
   			success:function(res){
   				let s="";
-  				s+=`<table class="table table-bordered" style="width:400px;">
-  					<tr>
-						<th>제품명</th>
-						<th>수량</th>
-						<th>단가</th>
-						<th>입고일</th>
+  				s+=`<table class="table table-bordered" style="width:500px;">
+  					<tr style="width:100px;">
+						<td>제품명</td>
+						<td>수량</td>
+						<td>단가</td>
+						<td>입고일</td>
 					</tr>`;
   				$(res).find("shop").each(function(idx,ele){
   				
   				s+=`
   				<tr>
-  					<td>${ele.find("sang").text()}</td>
-  					<td>${ele.find("su").text()}</td>
-  					<td>${ele.find("dan").text()}</td>
-  					<td>${ele.find("ipgoday").text()}</td>
-  				</tr>
-  				`;
+  					<td>${$(ele).find("snagpum").text()}</td> 
+                    <td>${$(ele).find("su").text()}</td>
+                    <td>${$(ele).find("dan").text()}</td>
+                    <td>${$(ele).find("ipgoday").text()}</td>
+  				</tr>`;
 				});
 				s+="</table>"
-				$(".sawonlist").html(s);
+				$(".shoplist").html(s);
 			}
 		});
 	}
