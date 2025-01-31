@@ -87,7 +87,7 @@
 					white-space:nowrap;display:block;max-width:200px;">
 						<a href="./contentdetail.jsp?num=<%=dto.getNum() %>">
 						<%=dto.getSubject() %>
-						<% if (commentCount > 0) { %>[<%= commentCount %>]<% } %>
+						<% if (commentCount > 0) { %><span style="color:red;">(<%= commentCount %>)</span><% } %>
 					</a>
 					</div>
 					</td>
@@ -102,4 +102,4 @@
 	</table>
 </div>
 </body>
-</html>s
+</html>
