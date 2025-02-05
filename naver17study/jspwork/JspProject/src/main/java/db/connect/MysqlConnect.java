@@ -12,6 +12,11 @@ public class MysqlConnect {
 	String username="root";
 	String password="1234";
 	
+	//네이버 클라우드 mysql 서버(camp107)
+	String url2="jdbc:mysql://db-324o8s-kr.vpc-pub-cdb.ntruss.com:3306/studydb?serverTimezone=Asia/Seoul";
+	String username2="study";
+	String password2="bitcamp!@#123";
+	
 	public MysqlConnect() {
 		// TODO Auto-generated constructor stub
 		try {
@@ -29,6 +34,17 @@ public class MysqlConnect {
 			conn=DriverManager.getConnection(url, username,password);
 		}catch(SQLException e) {
 			System.out.println("Mysql 접속 실패 :"+e.getMessage());
+		}
+		return conn;
+	}
+	
+	public Connection getNaverCloudConnection()
+	{
+		Connection conn=null;
+		try {
+			conn=DriverManager.getConnection(url2, username2,password2);
+		}catch(SQLException e) {
+			System.out.println("네이버 클라우드 Mysql 접속 실패 :"+e.getMessage());
 		}
 		return conn;
 	}

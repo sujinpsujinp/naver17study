@@ -29,11 +29,11 @@
 	List<ShopDto> list=new Vector<>();
 %>
 <%
-	list.add(new ShopDto("사과",3,2000));
+	/* list.add(new ShopDto("사과",3,2000));
 	list.add(new ShopDto("바나나",1,1000));
 	list.add(new ShopDto("오렌지",5,900));
 	list.add(new ShopDto("딸기",2,5000));
-	list.add(new ShopDto("참외",6,2500));
+	list.add(new ShopDto("참외",6,2500)); */
 %>
 <body>
 	<table class="tab table table-bordered" style="width:500px;">
@@ -51,10 +51,10 @@
 	  {%>
 	  	<tr>
 			<td align="center"><%= ++no %></td>
-			<td><%= dto.getSang()%></td>
+			<td><%= dto.getSangpum()%></td>
 			<td align="right"><%= dto.getSu() %></td>
-			<td align="right"><%= dto.getDan() %></td>
-			<td align="right"><%= dto.getDan()*dto.getSu()%></td>
+			<td align="right"><%= dto.getDanga() %></td>
+			<td align="right"><%= dto.getDanga()*dto.getSu()%></td>
 		</tr>
 	  <%}
 	  %>
