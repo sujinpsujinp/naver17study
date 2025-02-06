@@ -13,16 +13,6 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <style>
-       body *{
-          font-family:'Jua';
-            }
-       .btn{
-       		width:100px;
-       }
-  	</style>
-</head>
 <%
 	//1. num읽기
 	int num=Integer.parseInt(request.getParameter("num"));
@@ -35,6 +25,125 @@
 	
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 %>
+    <style>
+       body *{
+          font-family:'Jua';
+            }
+       .btn{
+       		width:100px;
+       }
+       .replelist b{
+       		cursor: pointer;
+       }
+       .replelist div{
+       		font-size:15px;
+       		font-family: 'Gaegu';
+       }
+       .replelist .day{
+       		margin:20px;
+       		font-size:13px;
+       		color: gray;
+       }
+       .replelist .close{
+       		margin: 15px;
+       		color:red;
+       		cursor: pointer;
+     		font-size: 20px;
+       }
+       .star{
+       		font-size: 13px;
+       }
+       .starfill{
+      		font-size: 13px;
+       		color:orange;
+       }
+  	</style>
+  	<script type="text/javascript">
+  		$(function() {
+			list();//처음 로딩 시 상품평 출력
+			
+			//상품평 등록 버튼
+			$("#btnreple").click(function() {
+				let num=<%=num%>;
+				let star=$(".selstar").val();
+				let mes=$("#message").val();
+				
+				$.ajax({
+					type:"get",
+					dataType:"html",
+					data:{"num":num,"star":star,"message":mes},
+					url:"./insertreple.jsp",
+					success:function(){
+						//상품평 등록 후 목록 다시 출력
+						list();
+						
+						//입력값 초기화
+						$(".selstar").val(5);
+						$("#message").val("");
+					}
+				});
+			});
+			
+			//상품평 삭제 이벤트
+			$(document).on("click","span.close",function(){
+				let idx=$(this).attr("idx");
+				if(confirm("해당 상품평을 삭제할까요?")){
+					$.ajax({
+						type:"get",
+						dataType:"html",
+						data:{"idx":idx},
+						url:"./deletereple.jsp",
+						success:function(){
+							list();
+						}
+					});
+				}
+			});
+			//상품평 나타내기/숨기기
+			$(".replelist>b").click(function() {
+				$(this).next().slideToggle('fast');
+			});
+			
+		});
+  		
+  		function list() 
+  		{
+  			let s="";
+			$.ajax({
+				type:"get",
+				dataType:"json",
+				data:{"num":<%=num%>},
+				url:"./listreple.jsp",
+				success:function(res){
+					let n=$(res).length;
+					$(".replelist>b").text("총"+n+"개");
+					//상품평 목록 출력
+					
+					$.each(res,function(idx,ele){
+						//class로 star
+						for(let i=0;i<=ele.star;i++)
+						{
+							s+=`<i class="bi bi-star-fill starfill"></i>`;	
+						}
+						for(let i=0;i<5-ele.star;i++)
+						{
+							s+=`<i class="bi bi-star star"></i>`;
+						}
+						s+=`<span class="day">\${ele.writeday}</span>`;
+						s+="<br>"
+						s+=`<span>\${ele.message}</span>`;
+						
+						s+=`<span class="close" idx="\${ele.idx}"><i class="bi bi-x-circle"></i></span>`;
+						s+="<br>";
+					});
+					$(".replelist div").html(s);
+				}
+				
+			});
+		}
+  	</script>
+</head>
+
 
 <body>
 <!-- 상품 저장 다이얼로그 -->
@@ -131,11 +240,11 @@
 
 
 <!-- table 을 이용해서 상세페이지 만들기, 맨 아래 수정, 삭제, 목록(연결) 버튼 넣기 -->
-<h5 class="alert alert-danger" style="text-align:center;width:500px" >
+<h5 class="alert alert-danger" style="text-align:center;width:700px" >
 [<%=dto.getSangpum() %>] 상품 상세</h5>
 
  <table class="tabdetail">
- 	<tr>
+ 	<tr colspan="7">
  		<td>
  			<img src="<%=dto.getSphoto() %>">
  		</td>
@@ -149,6 +258,31 @@
  			<h6>등록일 : <%= sdf.format(dto.getWriteday())%></h6>
  		</td>
  	</tr>
+ 	
+ 	<tr>
+ 		<td colspan="2">
+ 			<h6><b>상품평을 등록해주세요</b></h6>
+ 			<div class="repleform input-group">
+ 				<select class="form-select selstar"
+ 				style="width: 80px;">
+ 					<option value="5">5점</option>
+ 					<option value="4">4점</option>
+ 					<option value="3">3점</option>
+ 					<option value="2">2점</option>
+ 					<option value="1">1점</option>
+ 				</select>
+ 				<input type="text" id="message" class="form-control"
+ 				placeholder="상품평쓰기" style="width: 280px;">
+ 				<button type="button" class="btn btn-sm btn-info"
+ 				id="btnreple">등록</button>
+ 			</div>
+ 			<div class="replelist" style="margin-top: 10px;"> 
+ 				<b>0</b>
+ 				<div style="margin-left: 10px;">1</div>
+ 			</div>
+ 		</td>
+ 	</tr>
+ 	
  	<tr>
  	  <td colspan="2" align="center">
  		<button type="button"  class="btn btn-success btn-sm "
@@ -162,6 +296,11 @@
 	  </td>
 	</tr>
  </table>
+ <hr style="width:500px;">
+ <div style="margin:20px;width:500px;"> 
+ 	
+ </div>
+ 
  <script type="text/javascript">
  	$("#btndelete").click(function(){
  		//confirm으로 물어보고 [확인]을 누르면 삭제
