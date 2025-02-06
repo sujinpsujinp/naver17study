@@ -58,7 +58,7 @@ public class AnimalDao {
 		return list;
 	}
 	
-	public void insertAnimal(AnimalDto dto)
+	public void insertAnimal(AnimalDto dto, MultipartRequest multi)
 	{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -68,11 +68,14 @@ public class AnimalDao {
 				values(?,?,?,now())
 				""";
 		conn=connect.getConnection();
-		int maxSize = 10 * 1024 * 1024;
-		MultipartRequest multi = null;
+		String fileName = multi.getFilesystemName("aniphoto");
+		if (fileName == null) {
+			fileName = "default.jpg";
+		}
+		
 		try {
 			pstmt=conn.prepareStatement(sql);
-			multi = new MultipartRequest(request, saveDirectory, maxSize, "UTF-8", new DefaultFileRenamePolicy());
+	
 			//바인딩 4개
 			pstmt.setString(1, dto.getAniname());
 			pstmt.setString(2, dto.getAnikind());

@@ -34,23 +34,25 @@
   	</style>
   	<script>
   	
-  	//상품 등록 버튼 이벤트
-	$("#addfrm").submit(function(e){
-		e.preventDefault();//기본 이벤트를 무효화(action 호출되는거 X)
-		$.ajax({
-			type:"get",
-			dataType:"html",
-			data:$(this).serialize(),
-			url:"./insertaniaction.jsp",
-			success:function(){
-				alert("추가되었습니다");
-				//입력값 초기화
-				$("#aniname").val("");
-				$("#aniphoto").val("");
-				$("#animessage").val("");
-			}
+  	$(function(){
+		$("#addfrm").submit(function(e){
+			e.preventDefault();//기본 이벤트를 무효화(action 호출되는거 X)
+			$.ajax({
+				type:"post",
+				dataType:"html",
+				data:$(this).serialize(),
+				url:"./insertaniaction.jsp",
+				success:function(){
+					alert("추가되었습니다");
+					//입력값 초기화
+					$("#aniname").val("");
+					$("#aniphoto").val("");
+					$("#animessage").val("");
+				}
+			});
 		});
 	});
+	
   	</script>
 </head>
 <body>
@@ -69,13 +71,12 @@
 			</tr>
 			<tr>
 				<td class="title">사진</td>
-				<td><form action="./aniphoto.jsp" method="POST" enctype="multipart/form-data">
+				<td enctype="multipart/form-data">
             	<!-- accept속성 : 파일선택기에 해당하는 파일타입만 보이도록 -->
             	<input type="file" id="aniphoto" name="aniphoto" accept="image/jpg"><br>
             	</td>
-        </form>
+            </tr>	
 				
-			</tr>
 			<tr>
 				<td class="title">종류</td>
 				<td>
