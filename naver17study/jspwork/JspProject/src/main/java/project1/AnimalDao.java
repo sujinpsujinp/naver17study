@@ -14,9 +14,10 @@ import com.oreilly.servlet.multipart.FileRenamePolicy;
 
 import db.connect.MysqlConnect;
 import sawon.data.SawonDto;
+import shop.data.ShopDto;
 
 public class AnimalDao {
-	MysqlConnect connect=new MysqlConnect();
+	MysqlConnect db=new MysqlConnect();
 	
 	public List<AnimalDto> getAllDatas()
 	{
@@ -27,7 +28,7 @@ public class AnimalDao {
 		ResultSet rs=null;
 		String sql="select * from animal order by idx";
 		
-		conn=connect.getConnection();//db연결
+		conn=db.getNaverCloudConnection();//db연결
 		try {
 			pstmt=conn.prepareStatement(sql);
 			rs=pstmt.executeQuery(); //select일때만 executequery 반환타입이 rs라서
@@ -42,7 +43,7 @@ public class AnimalDao {
 				dto.setAniname(rs.getString("aniname"));
 				dto.setAnikind(rs.getString("anikind"));
 				dto.setAniphoto(rs.getString("aniphoto"));
-				dto.setAnimessage(rs.getString("aniphoto"));
+				dto.setAnimessage(rs.getString("animessage"));
 				dto.setAniday(rs.getTimestamp("aniday"));
 				
 				//dto에 레코드단위 데이터를 다 넣은 후 list에 추가
@@ -53,25 +54,21 @@ public class AnimalDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			connect.dbClose(rs, pstmt, conn);
+			db.dbClose(rs, pstmt, conn);
 		}
 		return list;
 	}
 	
-	public void insertAnimal(AnimalDto dto, MultipartRequest multi)
+	public void insertAnimal(AnimalDto dto)
 	{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		
 		String sql="""
-				insert into animal (aniname,anikind, aniphoto,animessage,aniday)
-				values(?,?,?,now())
+				insert into animal (aniname, anikind, aniphoto, animessage, aniday)
+				values(?, ?, ?, ?, now())
 				""";
-		conn=connect.getConnection();
-		String fileName = multi.getFilesystemName("aniphoto");
-		if (fileName == null) {
-			fileName = "default.jpg";
-		}
+		conn=db.getNaverCloudConnection();
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -88,8 +85,46 @@ public class AnimalDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			connect.dbClose(pstmt, conn);
+			db.dbClose(pstmt, conn);
 		}		
+	}
+	
+	public AnimalDto getAnimalName(int idx)
+	{
+		AnimalDto dto=new AnimalDto();
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="select * from animal where idx=? ";
+		
+		conn=db.getNaverCloudConnection();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			//바인딩
+			pstmt.setInt(1,idx);
+			
+			//실행
+			rs=pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				dto.setIdx(rs.getInt("idx"));
+				dto.setIdx(rs.getInt("idx"));
+				dto.setAniname(rs.getString("aniname"));
+				dto.setAnikind(rs.getString("anikind"));
+				dto.setAniphoto(rs.getString("aniphoto"));
+				dto.setAnimessage(rs.getString("animessage"));
+				dto.setAniday(rs.getTimestamp("aniday"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return dto;
 	}
 	
 	public void deleteAnimal(int idx)
@@ -100,7 +135,7 @@ public class AnimalDao {
 		String sql="""
 				delete from animal where idx=?
 				""";
-		conn=connect.getConnection();
+		conn=db.getNaverCloudConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			//바인딩
@@ -112,7 +147,7 @@ public class AnimalDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			connect.dbClose(pstmt, conn);
+			db.dbClose(pstmt, conn);
 		}		
 	}
 	
@@ -125,7 +160,7 @@ public class AnimalDao {
 				update animal set aniname=?,anikind=?,aniphoto=?, animessage=?
 				where idx=?
 				""";
-		conn=connect.getConnection();
+		conn=db.getNaverCloudConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			//바인딩
@@ -133,14 +168,14 @@ public class AnimalDao {
 			pstmt.setString(2, dto.getAnikind());
 			pstmt.setString(3, dto.getAniphoto());
 			pstmt.setString(4, dto.getAnimessage());
-			
+			pstmt.setInt(5, dto.getIdx());
 			pstmt.execute();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			connect.dbClose(pstmt, conn);
+			db.dbClose(pstmt, conn);
 		}		
 	}
 	

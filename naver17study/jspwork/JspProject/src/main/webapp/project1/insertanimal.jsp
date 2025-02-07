@@ -35,13 +35,14 @@
   	<script>
   	
   	$(function(){
-		$("#addfrm").submit(function(e){
+		
+  		$("#addfrm").submit(function(e){
 			e.preventDefault();//기본 이벤트를 무효화(action 호출되는거 X)
 			$.ajax({
 				type:"post",
 				dataType:"html",
 				data:$(this).serialize(),
-				url:"./insertaniaction.jsp",
+				url:"./insertanimalaction.jsp",
 				success:function(){
 					alert("추가되었습니다");
 					//입력값 초기화
@@ -50,9 +51,13 @@
 					$("#animessage").val("");
 				}
 			});
-		});
-	});
-	
+  		});
+			// 목록보기 버튼 클릭 시 페이지 이동
+		    $(".btnshowlist").click(function(){
+		        location.href = "./animallist.jsp";
+		    });
+		
+  	});
   	</script>
 </head>
 <body>
@@ -71,9 +76,26 @@
 			</tr>
 			<tr>
 				<td class="title">사진</td>
-				<td enctype="multipart/form-data">
-            	<!-- accept속성 : 파일선택기에 해당하는 파일타입만 보이도록 -->
-            	<input type="file" id="aniphoto" name="aniphoto" accept="image/jpg"><br>
+				<td>
+            	<select id="aniphoto" name="aniphoto" class="form-select">
+						  <script>
+						  for(let i=1;i<24;i++){
+						        let s = `<option value="../image/project1/\${i}.jpg">동물 \${i}</option>`;
+						        document.write(s);
+						  }  
+						  </script>		
+					 </select>
+					 <br>
+					<img src="" class="animalphoto" width="100">
+					
+					<script type="text/javascript">
+						$(".animalphoto").attr("src",$("#aniphoto").val());
+						
+						//이벤트
+						$("#aniphoto").change(function(){
+							$(".animalphoto").attr("src",$(this).val());
+						});
+					</script>
             	</td>
             </tr>	
 				
@@ -89,6 +111,7 @@
 				  <option value="고슴도치">고슴도치</option>
 				  <option value="햄스터">햄스터</option>
 				  <option value="새">새</option>
+				  <option value="뱀">뱀</option>
 				 </select>
 				</td>
 			</tr>
@@ -99,11 +122,13 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-				<button type="submit" data-bs-dismiss="modal"
-				class="btn btn-success addshop" >등록하기</button>
 				<button type="button" data-bs-dismiss="modal"
 				class="btn btn-success"
 				onclick="history.back()">뒤로가기</button>
+				<button type="submit" data-bs-dismiss="modal"
+				class="btn btn-success addshop" >등록하기</button>
+				<button type="button"
+				class="btn btn-success btnshowlist">목록보기</button>
 				</td>
 			</tr>
 		</table>

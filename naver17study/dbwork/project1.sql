@@ -20,4 +20,4 @@ create table anireple(
     writeday datetime,
     foreign key(idx) references animal(idx) on delete cascade);
 
-alter table animal MODIFY aniphoto LONGBLOB;
+alter table animal MODIFY aniphoto varchar(50);
