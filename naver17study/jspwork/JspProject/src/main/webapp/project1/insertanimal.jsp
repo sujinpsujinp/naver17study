@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>502jsp study</title>
+<title>등록하자</title>
 	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -37,7 +37,42 @@
   	$(function(){
 		
   		$("#addfrm").submit(function(e){
-			e.preventDefault();//기본 이벤트를 무효화(action 호출되는거 X)
+  			//기본 이벤트를 무효화(action 호출되는거 X)
+  			e.preventDefault();
+			
+  			let isValid = true;
+  	        
+  	        // 이름 유효성 검사
+  	        if ($("#aniname").val().trim() == "") {
+  	            $("#nameError").show();
+  	            isValid = false;
+  	        } else {
+  	            $("#nameError").hide();
+  	        }
+  	        
+  	        // 내용 유효성 검사
+  	        if ($("#animessage").val().trim() == "") {
+  	            $("#messageError").show();
+  	            isValid = false;
+  	        } else {
+  	            $("#messageError").hide();
+  	        }
+  	        
+  	        if (!isValid) {
+  	            return;
+  	        }
+  			
+			// anikind 값이 선택되지 않았다면 강아지로 설정
+			if ($("#anikind").val() == null) {
+	            $("#anikind").val("강아지");
+	        }
+			
+			if($("#aniname").val() == null){
+				alert("이름이 입력하지 않았습니다");
+			}else if($("#animessage").val() == null){
+				alert("내용이 입력되지 않았습니다");
+			}
+			
 			$.ajax({
 				type:"post",
 				dataType:"html",
@@ -72,7 +107,9 @@
 			<tr>
 				<td class="title">이름<i class="bi bi-asterisk"></i></td>
 				<td><input type="text" name="aniname" id="aniname"
-				class="form-control"></td>
+				class="form-control">
+				<span id="nameError" style="color: red; font-size: 12px; display: none;">이름을 입력하세요.</span>
+				</td>
 			</tr>
 			<tr>
 				<td class="title">사진</td>
@@ -118,7 +155,9 @@
 			<tr>
 				<td class="title">내용<i class="bi bi-asterisk"></i></td>
 				<td><input type="text" name="animessage" id="animessage"
-				class="form-control" ></td>
+				class="form-control" >
+				<span id="messageError" style="color: red; font-size: 12px; display: none;">내용을 입력하세요.</span>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">

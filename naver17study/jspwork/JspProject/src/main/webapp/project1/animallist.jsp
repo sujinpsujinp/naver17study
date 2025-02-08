@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>502jsp study</title>
+<title>전체 목록</title>
 	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -152,7 +152,7 @@
 	int no=list.size();
 %>
 <body>
-<h2 class="alert alert-success">글 목록</h2>
+<h2 class="alert alert-success">목록</h2>
 
 <div>
 	<div class="divtop" style="display: flex; justify-content: space-between; align-items: center;">

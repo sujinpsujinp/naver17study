@@ -114,11 +114,34 @@
 	 		}
 	 	});
 		
-		//상품평 등록 버튼
+		//댓글 등록 버튼
 		$("#btnreple").click(function() {
 			let idx=<%=idx%>;
 			let nick=$("#nickname").val();
 			let mes=$("#replemessage").val();
+			
+			let isValid = true;
+  	        
+  	        // 닉네임 유효성 검사
+  	        if ($("#nickname").val().trim() == "") {
+  	            $("#nicknameError").show();
+  	            isValid = false;
+  	        } else {
+  	            $("#nicknameError").hide();
+  	        }
+  	        
+  	        // 댓글 유효성 검사
+  	        if ($("#replemessage").val().trim() == "") {
+  	            $("#repleError").show();
+  	            isValid = false;
+  	        } else {
+  	            $("#repleError").hide();
+  	        }
+  	        
+  	        if (!isValid) {
+  	            return;
+  	        }
+			
 			
 			$.ajax({
 				type:"get",
@@ -311,12 +334,19 @@
  			<div class="repleform input-group">
  				<input type="text" id="nickname" class="form-control"
  				placeholder="닉네임 입력">
+ 				<br><br>
+ 				
  				
  				<input type="text" id="replemessage" class="form-control"
  				placeholder="댓글 입력"  style="width:300px;">
+ 				
  				<button type="button" class="btn btn-warning"
  				id="btnreple">등록</button>
  			</div>
+ 				&nbsp;
+ 				<span id="nicknameError" style="color: red; font-size: 12px; display: none;">이름을 입력하세요.</span> 
+ 				&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+ 				<span id="repleError" style="color: red; font-size: 12px; display: none;">댓글을 입력하세요.</span>
  			<div class="replelist" style="margin-top: 10px;"> 
  				<b>0</b>
  				<div style="margin-left: 10px;">1</div>
