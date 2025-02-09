@@ -303,7 +303,7 @@
 </div>
 
 
-<h5 class="alert alert-danger" style="text-align:center;width:700px" >
+<h5 class="alert alert-warning" style="text-align:center;width:700px" >
 [<%=dto.getAniname() %>]  상세</h5>
 
 <table class="tabdetail">
@@ -336,7 +336,6 @@
  				placeholder="닉네임 입력">
  				<br><br>
  				
- 				
  				<input type="text" id="replemessage" class="form-control"
  				placeholder="댓글 입력"  style="width:300px;">
  				
@@ -344,7 +343,7 @@
  				id="btnreple">등록</button>
  			</div>
  				&nbsp;
- 				<span id="nicknameError" style="color: red; font-size: 12px; display: none;">이름을 입력하세요.</span> 
+ 				<span id="nicknameError" style="color: red; font-size: 12px; display: none;">닉네임을 입력하세요.</span> 
  				&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
  				<span id="repleError" style="color: red; font-size: 12px; display: none;">댓글을 입력하세요.</span>
  			<div class="replelist" style="margin-top: 10px;"> 

@@ -43,7 +43,7 @@ public class AnimalrepleDao {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		String sql="select * from anireple where idx=? order by num desc";
+		String sql="select * from anireple where idx=?";
 		conn=db.getNaverCloudConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
