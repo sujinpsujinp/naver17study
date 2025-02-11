@@ -114,13 +114,13 @@
 			<tr>
 				<td class="title">사진</td>
 				<td>
-            	<select id="aniphoto" name="aniphoto" class="form-select">
-						  <script>
+            		<select id="aniphoto" name="aniphoto" class="form-select">
+						 <script>
 						  for(let i=1;i<24;i++){
 						        let s = `<option value="../image/project1/\${i}.jpg">동물 \${i}</option>`;
 						        document.write(s);
 						  }  
-						  </script>		
+						  </script>
 					 </select>
 					 <br>
 					<img src="" class="animalphoto" width="100">

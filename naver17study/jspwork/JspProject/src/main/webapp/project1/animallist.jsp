@@ -126,18 +126,17 @@
                 </td>
             </tr>
         	`;
-    		});
-		}
+    			});
+			}
   			    s += "</tbody></table>";
   			    $("div.result").html(s);
 		
-			}
+		}
   	</script>
 </head>
 <%
 	//dao 선언
 	AnimalDao dao=new AnimalDao();
-
 
 	//dto 선언
 	AnimalreplDto redto=new AnimalreplDto();	
