@@ -34,7 +34,7 @@ public class ConnectionManager
 		catch (IOException e)
 		{
 			e.printStackTrace();
-		}
+		}		
 	}
 	public SqlSession openSession()
 	{
