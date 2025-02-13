@@ -23,7 +23,7 @@ public class BoardListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//페이징 처리
-		int perPage=5;//한 페이지당 출력할 글의 갯수
+		int perPage=10;//한 페이지당 출력할 글의 갯수
 		int perBlock=5;//한 블럭당 출력할 블럭(12345 다음)의 갯수
 		int totalCount;//전체 게시글 갯수
 		int totalPage;//총 페이지 수

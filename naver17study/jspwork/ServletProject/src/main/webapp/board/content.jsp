@@ -33,7 +33,7 @@
   	</style>
   	<script type="text/javascript">
   		$(function() {
-			$(".btn").addClass("btn-sm btn-outline-secondary").css("width","100px");
+			$(".btn").addClass("btn-sm btn-outline-secondary").css("width","100px");		
 		});
   	</script>
 </head>
@@ -45,7 +45,7 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">프로필 이미지</h4>
+        <h4 class="modal-title">${dto.writer}님의 프로필 사진</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
@@ -61,7 +61,9 @@
   </div>
 </div>
 
-
+<jsp:include page="../kakao/kakaologin.jsp"/>
+<br><br>
+<hr>
 	<div style="margin: 20px;width: 600px;">
 		<h1><b>${dto.subject}</b></h1>
 		<div>
@@ -80,16 +82,21 @@
 			onclick="location.href='./writeform'">글쓰기</button>
 			
 			<button type="button" class="btn"
-			onclick="location.href='./list'">목록</button>
+			onclick="location.href='./list?pageNum=${pageNum}'">목록</button>
 			
 			<button type="button" class="btn"
 			onclick="location.href='./writeform?num=${dto.num}&regroup=${dto.regroup}&restep=${dto.restep}&relevel=${dto.relevel}'">답글</button>
 			
-			<button type="button" class="btn"
-			onclick="location.href='./updateform?num=${dto.num}'">수정</button>
+			<script>
+				if("${dto.writer}"==localStorage.writer){
+					document.write(`
+							<button type="button" class="btn"
+								onclick="location.href='./updateform?num=${dto.num}&pageNum=${pageNum}'">수정</button>`);
+				}
+			</script>			
 			
 			<button type="button" class="btn"
-			onclick="location.href='./deletepassform?num=${dto.num}'">삭제</button>
+			onclick="location.href='./deletepassform?num=${dto.num}&pageNum=${pageNum}'">삭제</button>
 		</div>
 	</div>
 </body>

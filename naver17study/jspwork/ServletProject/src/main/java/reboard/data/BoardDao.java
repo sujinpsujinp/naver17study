@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import mybatis.db.ConnectionManager;
+import shop.data.ShopDto;
 
 public class BoardDao {
 ConnectionManager connectionManager=ConnectionManager.getInstance();
@@ -104,5 +105,34 @@ ConnectionManager connectionManager=ConnectionManager.getInstance();
 		session.close();
 		return dto;
 	}
+	
+	public boolean isCheckPass(int num,String passwd)
+	{
+		boolean b;
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("num", num);
+		map.put("passwd", passwd);
+		
+		session=getSession();
+		int n=session.selectOne(nameSpace+"checkPass",map);
+		session.close();
+		return n==1?true:false;
+	}
+	
+	public void updateBoard(BoardDto dto)
+	{
+		session=getSession();
+		session.update(nameSpace+"updateBoard",dto);
+		session.close();
+	}
+	
+	public void deleteBoard(int num)
+	{
+		session=getSession();
+		session.delete(nameSpace+"deleteBoard",num);
+		session.close();
+	}
+	
+	
 	
 }

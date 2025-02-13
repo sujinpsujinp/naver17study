@@ -75,7 +75,7 @@
 					<td>
 						<!-- 제목 부분 -->
 						<a style="cursor: pointer;text-decoration: none;color: black;"
-						href="./detail?num=${dto.num}">
+						href="./detail?num=${dto.num}&pageNum=${pageNum}">
 						<!-- level 1당 3칸정도 띄우기 -->
 						<c:forEach begin="1" end="${dto.relevel}">
 								&nbsp;&nbsp;&nbsp;

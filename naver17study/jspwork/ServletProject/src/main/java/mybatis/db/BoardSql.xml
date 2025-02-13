@@ -23,4 +23,13 @@
 	<select id="selectOneByNum" parameterType="int" resultType="BoardDto">
 		select * from reboard where num=#{num}
 	</select>
+	<select id="checkPass" parameterType="Map" resultType="int">
+		select count(*) from reboard where num=#{num} and passwd=#{passwd}
+	</select>
+	<delete id="deleteBoard" parameterType="int">
+		delete from reboard where num=#{num}
+	</delete>
+	<update id="updateBoard" parameterType="BoardDto">
+		update reboard set subject=#{subject},content=#{content} where num=#{num}
+	</update>
 </mapper>

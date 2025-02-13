@@ -20,5 +20,45 @@
 </head>
 <body>
 
+<div style="margin: 20px;width: 500px;text-align: center;" class="oklogin">
+
+	<form action="./update" method="post">
+	<!-- hidden -->
+	<input type="hidden" name="num" value="${dto.num}">
+	<input type="hidden" name="pageNum" value="${pageNum}">
+		
+	 <table class="tab1 table table-bordered">
+		<caption align="top"><b>글하기</b></caption>
+		<tbody>
+		<tr>
+			<th>제목</th>
+			<td>
+				<input type="text" name="subject" class="form-control"
+				required="required" value="${dto.subject}">
+			</td>
+		</tr>
+		<tr>
+			<th>내용</th>
+			<td>
+				<textarea style="width: 100%;height: 120px;"
+				name="content" required="required">${dto.content}</textarea>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<button type="submit" class="btn btn-sm btn-success">수정하기</button>
+				
+				<button type="button"
+				class="btn btn-sm btn-outline-secondary"
+				onclick="history.back()">이전으로</button>
+				
+			</td>
+		</tr>
+		</tbody>
+ 	 </table>
+	</form>
+</div>
+
+
 </body>
 </html>

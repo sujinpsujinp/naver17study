@@ -1,6 +1,5 @@
 package reboard.servlet;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,35 +11,30 @@ import reboard.data.BoardDto;
 import java.io.IOException;
 
 /**
- * Servlet implementation class BoardDetailServlet
+ * Servlet implementation class BoardUpdateProcessServlet
  */
-@WebServlet("/board/detail")
-public class BoardDetailServlet extends HttpServlet {
+@WebServlet("/board/update")
+public class BoardUpdateProcessServlet extends HttpServlet {
+	
 	BoardDao dao=new BoardDao();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		//num읽기
-		int num=Integer.parseInt(request.getParameter("num"));
+		BoardDto dto=new BoardDto();
 		
-		//pageNum 읽기
+		//pageNum
 		String pageNum=request.getParameter("pageNum");
 		
+		dto.setNum(Integer.parseInt(request.getParameter("num")));
+		dto.setSubject(request.getParameter("subject"));
+		dto.setContent(request.getParameter("content"));
 		
-		//조회수 증가
-		dao.updateReadCount(num);
+		dao.updateBoard(dto);
 		
-		//dto읽기
-		BoardDto dto=dao.getData(num);
+		//상세보기페이지로 리다이렉트
+		response.sendRedirect("./detail?num="+dto.getNum()+"&pageNum="+pageNum);
 		
-		//request에 dto 저장
-		request.setAttribute("dto", dto);
-		request.setAttribute("pageNum", pageNum);
-		
-		//포워드
-		RequestDispatcher rd=request.getRequestDispatcher("./content.jsp");
-		rd.forward(request, response);
 	}
 
 	/**
