@@ -19,6 +19,9 @@
        .tab1 thead th{
        		background-color: #fff0f5;
        }
+       a.pagea:hover{
+       		text-decoration: underline;
+       }
   	</style>
   	<script type="text/javascript">
   		$(function() {
@@ -65,7 +68,10 @@
 		<c:if test="${totalCount>0}">
 			<c:forEach var="dto" items="${list}" varStatus="i">
 				<tr>
-					<td align="center">${totalCount-i.index}</td>
+					<td align="center">
+						${no}
+						<c:set var="no" value="${no-1}"/>
+					</td>
 					<td>
 						<!-- 제목 부분 -->
 						<a style="cursor: pointer;text-decoration: none;color: black;"
@@ -92,6 +98,33 @@
 		</c:if>
 		</tbody>
 	</table>
+	
+	<!-- 페이지번호 출력 -->
+	<div style="text-align: center;">
+		<!-- 이전 -->
+		<c:if test="${startPage>1 }">
+			<a class="pagea" href="./list?pageNum=${startPage-1}"
+			style="color:black;">&lt;이전</a>&nbsp;
+		</c:if>
+		
+		<c:forEach var="pp" begin="${startPage}" end="${endPage}">
+			<c:if test="${pp==pageNum }">
+				<a class="pagea" href="./list?pageNum=${pp}"
+				style="color:green;">${pp}</a>&nbsp;
+			</c:if>
+			<c:if test="${pp!=pageNum}">
+				<a class="pagea" href="./list?pageNum=${pp}"
+				style="color:black;">${pp}</a>&nbsp;
+			</c:if>
+		</c:forEach>
+		
+		<!-- 다음 -->
+		<c:if test="${totalPage>endPage }">
+			<a class="pagea" href="./list?pageNum=${endPage+1}"
+			style="color:black;">다음&gt;</a>
+		</c:if>
+	</div>
+	
 </div>
 </body>
 </html>
