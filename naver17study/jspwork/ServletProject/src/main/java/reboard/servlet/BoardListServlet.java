@@ -52,7 +52,7 @@ public class BoardListServlet extends HttpServlet {
 		if(endPage>totalPage)
 			endPage=totalPage;
 		
-		startNum=(pageNum-1)*perPage;//mysql은 첫 글이 0번(오라클은 1번이므로 여기서 +1)
+		startNum=(pageNum-1)*perPage;//mysql은 첫 글이 0번(오라클은 1번이므로 여기서 -1)
 		
 		
 		//System.out.println("totalPage="+totalPage);

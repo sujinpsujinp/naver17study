@@ -14,7 +14,7 @@ import lombok.test.TestDto;
 public class HelloController {
 	
 	//@RequestMapping(value="/", method = RequestMethod.GET) //스프링 모든 버전에서 가능
-	//@RequestMapping("/") //method 방삭 생략 시 기본이 get
+	//@RequestMapping("/") //method 방식 생략 시 기본이 get
 	@GetMapping("hello2") //스프링5부터 가능
 	@ResponseBody public TestDto hello() //json형식으로 바로 브라우저에 출력
 	{

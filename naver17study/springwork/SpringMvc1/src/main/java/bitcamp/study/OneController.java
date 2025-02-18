@@ -56,7 +56,5 @@ public class OneController {
 		model.addAttribute("mycar",mycar.getMycarName());
 		model.addAttribute("mycarColor",mycar.getMycarColor());
 		return "study";
-	}
-	
-	
+	}	
 }
