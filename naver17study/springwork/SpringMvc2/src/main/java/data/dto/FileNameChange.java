@@ -28,7 +28,7 @@ public class FileNameChange {
 	static public String getRandomChangeFileName(String originalName)
 	{
 		//. 를 기준으로 파일명과 확장자만 구하기 분리
-		String extName=originalName.split("\\.")[0];
+		String extName=originalName.split("\\.")[1];
 
 		//최종 업로드할 파일명
 		String uploadFileName=UUID.randomUUID()+"."+extName;

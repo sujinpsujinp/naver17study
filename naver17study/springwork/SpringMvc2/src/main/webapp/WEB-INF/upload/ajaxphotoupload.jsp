@@ -39,7 +39,6 @@
 <div style="margin: 50px;">
 	<!-- display: none; 안보이게 처리-자리차지 안하게 -->
 	<input type="file" id="photoupload" style="display: none;">
-	
 	<img src="" id="myphoto" onerror="this.src='./image/noimage.png'">
 	
 	<i class="bi bi-camera mycamera"></i>

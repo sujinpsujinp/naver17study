@@ -82,7 +82,6 @@ public class PhotoUploadController {
 		//업로드할 프로젝트내의 위치를 지정(webapp/save)
 		String uploadFolder=request.getSession().getServletContext().getRealPath("/save");
 		
-		
 		//업로드된 파일명을 저장할 리스트변수
 		List<String> list=new Vector<>();
 		
@@ -178,7 +177,6 @@ public class PhotoUploadController {
 			map.put("photo", uploadFileName);
 			list.add(map);
 		}
-
 		return list;
 	}	
 	

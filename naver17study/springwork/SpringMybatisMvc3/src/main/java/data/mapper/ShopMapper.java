@@ -1,0 +1,17 @@
+package data.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import data.dto.ShopDto;
+
+@Mapper
+public interface ShopMapper {
+	public int getTotalCount();
+	public void insertShop(ShopDto dto);
+	public List<ShopDto> getAllSangpum();
+	public ShopDto oneSangpum(int num);
+	public void updateShop(ShopDto dto);
+	public void deleteShop(int num);
+}
