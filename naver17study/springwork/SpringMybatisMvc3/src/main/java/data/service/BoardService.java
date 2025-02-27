@@ -74,6 +74,16 @@ public class BoardService {
 		return boardMapper.getSelectById(myid);
 	}
 	
+	public void updateBoard(BoardDto dto)
+	{
+		boardMapper.updateBoard(dto);
+	}
+	
+	public void deleteBoard(int idx)
+	{
+		boardMapper.deleteBoard(idx);
+	}
+	
 }
 
 

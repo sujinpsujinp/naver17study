@@ -125,7 +125,7 @@
 		<br>
 		<span style="margin-left:300px;font-size: 15px;">
 			<c:if test="${sessionScope.loginstatus!=null}">
-				<c:set var="naverurl" value="https://kr.object.ncloudstorage.com/bitcamp-bucket-56"/>
+				<c:set var="naverurl" value="https://kr.object.ncloudstorage.com/bitcamp-bucket-107"/>
 				
 				<img src="${naverurl}/member/${sessionScope.loginphoto}" class="profilephoto"
 				onerror="this.src='${root}/save/noimage.png'">
