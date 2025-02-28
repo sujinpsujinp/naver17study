@@ -84,7 +84,7 @@ public class ShopRepleController {
 		//		File file=new File(uploadFolder+"/"+photo);
 		//		if(file.exists())
 		//			file.delete();
-
+		System.out.println("idx="+idx);
 		//네이버 스토리지의 사진 삭제
 		//삭제할 사진명
 		String photo=repleService.getPhoto(idx);

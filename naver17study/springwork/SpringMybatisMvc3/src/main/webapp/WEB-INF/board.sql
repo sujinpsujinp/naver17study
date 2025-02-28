@@ -1,4 +1,4 @@
-    create table board (
+ create table board (
 		idx smallint auto_increment primary key,
         myid varchar(30),
         writer varchar(30),
@@ -10,10 +10,19 @@
         restep smallint,
         writeday datetime default now());
 
-	create table boardfile(
+create table boardfile(
 		num smallint auto_increment primary key,
         idx smallint,
         filename varchar(50),
         foreign key(idx) references board(idx)
         on delete cascade);
-        
+  
+create table boardreple (
+	num smallint auto_increment primary key,
+    idx smallint,
+    myid varchar(30),
+    message varchar(1000),
+    photo varchar(50),
+    writeday datetime,
+    foreign key(idx) references board(idx)
+    on delete cascade);

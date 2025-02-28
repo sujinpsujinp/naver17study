@@ -19,8 +19,10 @@ import com.amazonaws.services.ec2.model.Storage;
 
 import data.dto.BoardDto;
 import data.dto.BoardFileDto;
+import data.dto.BoardRepleDto;
 import data.dto.MemberDto;
 import data.service.BoardFileService;
+import data.service.BoardRepleService;
 import data.service.BoardService;
 import data.service.MemberService;
 import jakarta.servlet.http.HttpSession;
@@ -35,6 +37,7 @@ public class BoardController {
 	final BoardFileService fileService;
 	final MemberService memberService;
 	final NcpObjectStorageService storageService;
+	final BoardRepleService repleService;
 	
 	//버켓 이름
 	private String bucketName="bitcamp-bucket-107";//각자 자기꺼 써야함
@@ -104,13 +107,19 @@ public class BoardController {
 	@GetMapping("/detail")
 	public String detail(@RequestParam int idx,
 			@RequestParam(defaultValue="1") int pageNum,
-			Model model)
+			Model model,
+			HttpSession session
+			)
 	{
 		//조회수 증가
 		boardService.updateReadCount(idx);
 		
 		//idx에 해당하는 dto얻기
 		BoardDto dto=boardService.getSelectByIdx(idx);
+		
+		//리플 정보 얻기
+		BoardRepleDto rdto=new BoardRepleDto();
+		
 		
 		//idx 글에 등록된 파일들 가져오기
 		List<String> fileList=new Vector<>();
@@ -124,14 +133,19 @@ public class BoardController {
 		
 		//해당 아이디에대한 사진을 멤버 테이블에서 얻기
 		String memberPhoto=memberService.getSelectByMyid(dto.getMyid()).getMphoto();
+		//로그인한 아이디에 해당하는 이름
+		String loginid=(String)session.getAttribute("loginid");
+		String writer=memberService.getSelectByMyid(loginid).getMname();
+		
+		//리플에 해당하는 message 저장
+		//String message=repleService.getRepleByIdx(idx);
 		
 		//모델에 저장
+		model.addAttribute("writer",writer);
 		model.addAttribute("dto", dto);
 		model.addAttribute("memberPhoto",memberPhoto);
 		model.addAttribute("pageNum",pageNum);
 		model.addAttribute("naverurl","https://kr.object.ncloudstorage.com/"+bucketName);
-		
-		
 		
 		return "board/boarddetail";
 	}
@@ -144,7 +158,7 @@ public class BoardController {
 			)
 	{
 		BoardDto dto=boardService.getSelectByIdx(idx);
-		
+		//model.addAttribute("writer",writer);
 		model.addAttribute("dto",dto);
 		model.addAttribute("pageNum",pageNum);
 		model.addAttribute("naverurl","https://kr.object.ncloudstorage.com/"+bucketName);
@@ -204,5 +218,23 @@ public class BoardController {
 		}
 		return "redirect:./detail?idx="+dto.getIdx()+"&pageNum="+pageNum;
 	}
-
+	
+	@GetMapping("/delete")
+	@ResponseBody
+	public void boardDelete(@RequestParam int idx
+			
+			)
+	{
+		//idx에 해당하는 파일들 삭제
+		List<BoardFileDto> filelist=fileService.getFiles(idx);
+		for(BoardFileDto fdto:filelist)
+		{
+			String filename=fdto.getFilename();
+			storageService.deleteFile(bucketName, "board", filename);
+		}
+		
+		boardService.deleteBoard(idx);//원글을 지우면 그 글에 업로드된 파일들 db정보는 자동으로 지워짐
+	}
+	
+	
 }

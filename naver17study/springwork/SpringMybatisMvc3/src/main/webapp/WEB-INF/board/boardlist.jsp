@@ -64,6 +64,9 @@
 					<!-- 제목 -->
 						<a href="./detail?idx=${dto.idx}&pageNum=${pageNum}"
 						style="color:black;text-decoration: none;">
+							
+							
+						
 							<!--답글인 경우 레벨수만큼 띄어쓰기 -->
 							<c:if test="${dto.relevel>0}">
 								<c:forEach begin="1" end="${dto.relevel }">
@@ -72,6 +75,10 @@
 								<!-- 답글인 경우 re 이미지 -->
 								<img src="../re2.png">
 							</c:if>
+							<!-- 댓글 수 노출 -->
+							<c:if test="${dto.replecount>0}">
+				   				<span class="badge bg-success">${dto.replecount}</span>
+				   			</c:if>
 							${dto.subject }
 							
 							<!-- 이미지가 한개 이상 있는 경우 이미지 아이콘 넣기 

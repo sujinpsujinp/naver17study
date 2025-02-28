@@ -157,7 +157,7 @@
      					//댓글 삭제후 전체 댓글 다시 출력
      					replelist();
      				}
-     			});
+     			}); 
      		});
      		
      		//추천아이콘 클릭시 추천수 증가
@@ -218,6 +218,31 @@
 <jsp:include page="../../layout/title.jsp"/>
 <!-- The Modal -->
 <div class="modal" id="myMiniPhotoModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">원본사진</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <img src="" class="replelarge" style="width: 100%;">
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="updateRepleModal">
   <div class="modal-dialog">
     <div class="modal-content">
 

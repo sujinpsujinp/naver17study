@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import data.dto.BoardDto;
 import data.service.BoardFileService;
+import data.service.BoardRepleService;
 import data.service.BoardService;
 import data.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -19,14 +20,15 @@ public class BoardListController {
 	final BoardService boardService;
 	final BoardFileService fileService;
 	final MemberService memberService;
+	final BoardRepleService repleService;
 
 	@GetMapping("/board/list")
 	public String list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,
 			Model model)
 	{
 		//페이징 처리
-		int perPage=3;//한 페이지당 출력할 글의 갯수
-		int perBlock=3;//한 블럭당 출력할 블럭(12345 다음)의 갯수
+		int perPage=5;//한 페이지당 출력할 글의 갯수
+		int perBlock=5;//한 블럭당 출력할 블럭(12345 다음)의 갯수
 		int totalCount;//전체 게시글 갯수
 		int totalPage;//총 페이지 수
 		int startNum;//각 페이지에서 가져올 시작번호(mysql은 첫 데이터가 0번, 오라클은 1번) 오라클은 endNum변수 필요
@@ -65,11 +67,17 @@ public class BoardListController {
 			BoardDto dto=list.get(i);
 			int count=fileService.getFiles(dto.getIdx()).size();
 			list.get(i).setPhotoCount(count);
+			
+			//댓글 수 저장
+			int replecount=repleService.getRepleByIdx(dto.getIdx()).size();
+			dto.setReplecount(replecount);
 		}
 		
 		//각 페이지의 글 앞에 출력할 시작번호(예: 총 글이 20개일 경우 1페이지는 20, 2페에이지는 15...)
 		no=totalCount-(pageNum-1)*perPage;
-
+		
+		
+		
 		//request 에 저장
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("list", list);

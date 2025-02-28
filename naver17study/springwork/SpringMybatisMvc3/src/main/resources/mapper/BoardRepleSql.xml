@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.mapper.BoardRepleMapper">
+	<insert id="insertReple" parameterType="BoardRepleDto">
+		insert into boardreple (idx,myid,message,photo,writeday)
+		values (#{idx},#{myid},#{message},#{photo},now())
+	</insert>
+	<select id="getRepleByIdx" parameterType="int" resultType="BoardRepleDto">
+		select * from boardreple where idx=#{idx} order by num desc
+	</select>
+	<select id="getRepleByNum" parameterType="int" resultType="BoardRepleDto">
+		select * from boardreple where num=#{num}
+	</select>
+	<select id="getPhoto" parameterType="int" resultType="String">
+		select photo from boardreple where idx=#{idx}
+	</select>
+	<delete id="deleteBoardReple" parameterType="int">
+		delete from boardreple where num=#{num}
+	</delete>
+	<update id="updateReple" parameterType="BoardRepleDto">
+		update boardreple set message=#{message} where num=#{num}
+	</update>
+</mapper>

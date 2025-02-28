@@ -22,4 +22,5 @@ public class BoardDto {
 	private Timestamp writeday;
 	private List<String> photos;
 	private int photoCount;
+	private int replecount;//댓글 갯수 저장
 }
