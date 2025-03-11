@@ -75,6 +75,7 @@
 								<!-- 답글인 경우 re 이미지 -->
 								<img src="../re2.png">
 							</c:if>
+							
 							<!-- 댓글 수 노출 -->
 							<c:if test="${dto.replecount>0}">
 				   				<span class="badge bg-success">${dto.replecount}</span>

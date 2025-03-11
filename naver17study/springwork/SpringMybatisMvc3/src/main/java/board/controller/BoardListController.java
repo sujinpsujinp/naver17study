@@ -70,13 +70,12 @@ public class BoardListController {
 			
 			//댓글 수 저장
 			int replecount=repleService.getRepleByIdx(dto.getIdx()).size();
-			dto.setReplecount(replecount);
+			list.get(i).setReplecount(replecount);//쌤이 해주심
+			//dto.setReplecount(replecount); //내가함
 		}
 		
 		//각 페이지의 글 앞에 출력할 시작번호(예: 총 글이 20개일 경우 1페이지는 20, 2페에이지는 15...)
 		no=totalCount-(pageNum-1)*perPage;
-		
-		
 		
 		//request 에 저장
 		model.addAttribute("totalCount", totalCount);

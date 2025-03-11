@@ -148,11 +148,13 @@
      		
      		//댓글 삭제
      		$(document).on("click",".repledel",function(){
+     			//num 읽기
      			let num=$(this).attr("num");
      			console.log("삭제할 댓글 번호:", num);
      			let ans=confirm("해당 댓글을 삭제할까요?");
      			 if(!ans) return;//취소 클릭시 함수 종료
      			
+     			if(ans){
      			$.ajax({
      				type:"get",
      				dataType:"text",
@@ -162,13 +164,22 @@
      					//댓글 삭제후 전체 댓글 다시 출력
      					replelist();
      				}
-     			});  
+     			});
+     		   }
      		});
-     		    		
+     		
      		//댓글 수정 이벤트
-     		 $(document).on("click", ".updatebtn", function () {
+     		$(document).on("click", ".edticon", function () {
+    			let num = $(this).attr("num");
+    			$("#editRepleModal .updatebtn").attr("num", num);
+    			$("#editRepleModal textarea").val($(this).closest(".item").find("pre").text());
+			});
+
+     		
+     		$(document).on("click", ".updatebtn", function () {
+     			//console.log(\${rdto.message})
      			let num=$(this).attr("num");
-				let m=$("#message").val();
+				let m=$("#editRepleModal textarea").val();
 				
 				let form=new FormData();
 				form.append("num",num);
@@ -177,14 +188,19 @@
 				$.ajax({
 					type:"post",
 					dataType:"text",
-					data:form,
-					processData:false,
-					contentType:false,
+					data:{"num": num, "message": m},
 					url:"./updatereple",
 					success:function(){
 						//추가 성공 후 댓글 목록 다시 출력
-						alert("댓글 수정 성공");
-						replelist();
+						//alert("댓글 수정 성공");
+						//replelist();
+						if (res == "fail") {
+			                alert("댓글 수정 실패");
+			            } else {
+			                alert("댓글 수정 성공");
+			                replelist();
+			            }
+
 					}
 				}); 
 			});
@@ -207,9 +223,12 @@
      						<img src="${naverurl}/member/\${item.profilePhoto}" class="profile">
      						<b>\${item.writer}</b><span class="day">\${item.writeday}</span>
      						<i class="bi bi-trash-fill repledel" num="\${item.num}"></i>
-     						<i class="bi bi-pencil-fill edticon" num="\${item.num}"
-     							data-bs-toggle="modal" data-bs-target="#editRepleModal"></i>
-     					 <div class="item" style="margin:5px;">
+     						<span class="remod">
+     							<a href="#"><i class="bi bi-pencil-fill edticon" num="\${item.num}"
+     							data-bs-toggle="modal" data-bs-target="#editRepleModal"></i></a>
+     						</span
+     					
+     						<div class="item" style="margin:5px;">
      						<pre style="font-size:15px;">\${item.message}</pre>
      						<br>`;
      						
@@ -271,7 +290,7 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <textarea style="width: 100%;" class="form-control ">\${message}</textarea>
+        <textarea style="width: 100%;"></textarea>
          <button type="submit" class="btn btn-success updatebtn" num="\${dto.num}" data-bs-dismiss="modal">저장</button>
       </div>
 
@@ -307,7 +326,8 @@
 		<div style="margin-top: 30px;width: 500px;border: 1px solid gray;">
 			<h5 style="margin-left: 10px;">${writer}</h5>
 			<textarea type="text" id="message" class="form-control" placeholder="댓글을 입력하세요"></textarea>
-			<br class="replephoto">
+			<br>
+			<div class="replephoto" style="margin-bottom:10px;padding-left:10px; "></div>
 			<div>
 			
 			<input type="file" id="fileupload">

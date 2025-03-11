@@ -25,9 +25,9 @@ public class BoardRepleService {
 		return repleMapper.getRepleByIdx(idx);
 	}
 	
-	public BoardRepleDto getRepleByNum(int num)
+	public BoardRepleDto getSelectData(int num)
 	{
-		return repleMapper.getRepleByNum(num);
+		return repleMapper.getSelectData(num);
 	}
 	
 	

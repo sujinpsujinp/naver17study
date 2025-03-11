@@ -91,29 +91,34 @@ public class BoardRepleController {
 		System.out.println("num="+num);
 		//네이버 스토리지의 사진 삭제
 		//삭제할 파일명
-		String photo=repleService.getPhoto(num);
-		storageService.deleteFile(bucketName, "board", photo);
+		String photo=repleService.getSelectData(num).getPhoto();
+		if(photo!=null)
+			storageService.deleteFile(bucketName, "board", photo);
 		
 		//db삭제
 		repleService.deleteBoardReple(num);
 	}
 	
+	
+	
 	@PostMapping("/updatereple")
 	@ResponseBody
-	public String updateReple(@RequestParam("num") int num,@RequestParam("message") String message)
+	public String updateReple(
+			@RequestParam("num") int num,@RequestParam("message") String message
+			)
 	{
 		//List<BoardRepleDto> list=null;
-		BoardRepleDto dto=new BoardRepleDto();
+		BoardRepleDto rdto=repleService.getSelectData(num);
 		
-		dto=repleService.getRepleByNum(num);
-		if (dto == null) {
+		if (rdto == null) {
 	        return "fail";
 	    }
 		
-		dto.setMessage(message);
+		rdto.setMessage(message);
 		
-		repleService.updateReple(dto);
-		return "dto";
+		repleService.updateReple(rdto);
+		
+		return "success";
 	}
 	
 	

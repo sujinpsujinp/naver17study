@@ -8,7 +8,7 @@
 	<select id="getRepleByIdx" parameterType="int" resultType="BoardRepleDto">
 		select * from boardreple where idx=#{idx} order by num desc
 	</select>
-	<select id="getRepleByNum" parameterType="int" resultType="BoardRepleDto">
+	<select id="getSelectData" parameterType="int" resultType="BoardRepleDto">
 		select * from boardreple where num=#{num}
 	</select>
 	<select id="getPhoto" parameterType="int" resultType="String">

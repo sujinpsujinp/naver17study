@@ -221,9 +221,7 @@ public class BoardController {
 	
 	@GetMapping("/delete")
 	@ResponseBody
-	public void boardDelete(@RequestParam int idx
-			
-			)
+	public void boardDelete(@RequestParam int idx)
 	{
 		//idx에 해당하는 파일들 삭제
 		List<BoardFileDto> filelist=fileService.getFiles(idx);
