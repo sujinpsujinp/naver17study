@@ -29,7 +29,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class MycarDto {
 	
-	@Id //각엔티티를 구별할 수 있도록 식별 아이디를 갖도록 설계
+	@Id //각 엔티티를 구별할 수 있도록 식별 아이디를 갖도록 설계
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long num;
 	

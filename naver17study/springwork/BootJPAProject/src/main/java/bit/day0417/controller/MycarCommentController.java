@@ -26,7 +26,7 @@ public class MycarCommentController {
 			@RequestParam("num") Long num) { 
 		//먼저 MycarDto에 num값을 넣은 후 MyCarCommentDto에
 		//넣는다(외부키로 지정된 값) 
-		MycarDto mycar=MycarDto.builder().num(num).build();
+	   MycarDto mycar=MycarDto.builder().num(num).build();
 	  
 	   MycarCommentDto commentDto=MycarCommentDto.builder() 
 			   .nickname(nickname)

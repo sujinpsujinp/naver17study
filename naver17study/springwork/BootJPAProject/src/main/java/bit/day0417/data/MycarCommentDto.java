@@ -37,10 +37,11 @@ public class MycarCommentDto {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idx;
 	
-	/*
-	 * 은행 서비스에서 사용자(TABLE_USER)가 1개 이상의 계좌(TABLE_ACCOUNT)를
-	 * 가질 수 있다고 가정할 경우 TABLE_USER
-	 * */
+	/* * 
+	 * 은행 서비스에서 사용자(TABLE_USER)가 1개 이상의 계좌(TABLE_ACCOUNT)를 
+	 * 가질수 있다고 가정할경우 TABLE_USER 입장에서 보면 OneToMany이고, 
+	 * TABLE_ACCOUNT 입장에서 보면 ManyToOne이다.
+	 */
 	//하나의 글에 여러개의 코멘트가 달리니까
 	@ManyToOne
 	@JoinColumn(name="num")
