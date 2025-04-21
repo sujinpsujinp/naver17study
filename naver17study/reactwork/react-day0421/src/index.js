@@ -3,11 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+//default로 하지않은 경우 
+//import { OneApp } from './components/OneApp';
+import MainApp from './components/MainApp';
+//default로 export 한 경우에는 내 마음대로 이름을 정해도 된다
+//import One from './components/OneApp';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    {/* <One/> */}
+    {/* <OneApp/> */}
+    <MainApp/>
   </React.StrictMode>
 );
 

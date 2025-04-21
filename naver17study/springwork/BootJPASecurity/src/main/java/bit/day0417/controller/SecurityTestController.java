@@ -48,8 +48,8 @@ final JoinService joinService;
 		GrantedAuthority auth=iter.next();
 		String role=auth.getAuthority();
 		
-		model.addAttribute("username",username);
-		model.addAttribute("role",role);
+		model.addAttribute("username", username);
+		model.addAttribute("role", role);
 		
 		return "mypage";
 	}
