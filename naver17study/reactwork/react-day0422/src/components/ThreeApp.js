@@ -23,7 +23,7 @@ const ThreeApp = () => {
     }
     return (
         <div>
-            <h3 className='alert alert-success'>ThreeApp</h3>
+            <h3 className='alert alert-success'>ThreeApp-이벤트 연습 2</h3>
             <h2 style={{fontFamily:'Nanum Pen Script',fontSize:'50px',color:'#f63030'}}>오늘의 문제</h2>
             <hr/>
             <label>

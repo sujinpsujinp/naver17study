@@ -15,7 +15,7 @@ const TwoApp = () => {
     
     return (
         <div>
-            <h3 className='alert alert-success'>TwoApp</h3>
+            <h3 className='alert alert-success'>TwoApp-이벤트 연습</h3>
             {
             show &&
             <img alt='' src={photo} style={{width:'200px',border:`${borderWidth}px solid ${borderColor}`}}/>
