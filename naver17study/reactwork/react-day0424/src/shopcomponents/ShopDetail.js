@@ -34,7 +34,7 @@ const ShopDetail = () => {
             <Alert severity='info' style={{margin:'15px',fontSize:'20px'}}>상품상세</Alert>
             {
             selectData &&
-               <table className='table table-bordered' style={{width:'400px'}}>
+               <table className='table table-bordered' style={{width:'400px',margin:'15px'}}>
                     <tbody>
                         <tr>
                             <td align='center' colSpan={2}>
@@ -69,7 +69,8 @@ const ShopDetail = () => {
                                 <button type='button' className='btn btn-sm btn-outline-success' 
                                 onClick={()=>navi("/fiveapp/list")}>상품목록</button>
                                 &nbsp;
-                                <button type='button' className='btn btn-sm btn-outline-success'>상품수정</button>
+                                <button type='button' className='btn btn-sm btn-outline-success'
+                                onClick={()=>navi(`/fiveapp/updateform/${num}`)}>상품수정</button>
                                 &nbsp;
                                 <button type='button' className='btn btn-sm btn-danger'
                                 onClick={()=>{onDeleteEvent(selectData.num)}}>상품삭제</button>

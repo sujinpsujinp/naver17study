@@ -90,4 +90,21 @@ public class ReactShopController {
 		
 		return "delete OK!";
 	}
+	
+	@PostMapping("/shopupdate")
+	public String updateShop(@RequestBody ShopDto dto) 
+	{
+		ShopEntity entity=ShopEntity.builder()
+				.sangpum(dto.getSangpum())
+				.color(dto.getColor())
+				.price(dto.getPrice())
+				.sangguip(dto.getSangguip())
+				.num(dto.getNum())
+				.photo(uploadFilename)
+				.build();
+		shopDao.updateShop(entity);
+		uploadFilename=null;
+		return "update ok";
+	}
+	
 }

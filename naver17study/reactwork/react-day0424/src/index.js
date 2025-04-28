@@ -8,11 +8,15 @@ import Root from './router/Root';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    {/* <App /> */}
-    {/*<MainApp/>*/}
-    <Root/>
-  </React.StrictMode>
+  // <React.StrictMode>
+  //   {/* <App /> */}
+  //   {/*<MainApp/>*/}
+    
+  // </React.StrictMode>
+
+  <>
+  <Root/>
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function

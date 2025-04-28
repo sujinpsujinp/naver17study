@@ -18,7 +18,7 @@ const RouterMain = () => {
             <Route path='/fiveapp/*' element={<FiveApp/>}/>
             <Route path='/sixapp' element={<SixApp/>}/>
             <Route path='/sevenapp' element={<SevenApp/>}/>
-            <Route path='/eightapp' element={<EightApp/>}/>
+            <Route path='/eightapp/*' element={<EightApp/>}/>
             </Routes>
         </div>
     );

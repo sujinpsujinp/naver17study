@@ -11,10 +11,9 @@ import EightApp from './EightApp';
 
 
 const MainApp = () => {
-    const [idx,setIdx]=useState(5);
+    const [idx,setIdx]=useState(8);
     const [age, setAge] = React.useState('');
 
-    
     return (
         <div>
             <Alert severity='info'>2025-04-24 React 수업</Alert>

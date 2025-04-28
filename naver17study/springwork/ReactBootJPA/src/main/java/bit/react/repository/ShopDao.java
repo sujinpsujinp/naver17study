@@ -41,8 +41,12 @@ public class ShopDao {
 	//수정
 	public void updateShop(ShopEntity shopEntity)
 	{
-		shopRepository.save(shopEntity);//num이 포함되어있으므로 수정됨
+		if(shopEntity.getPhoto()==null)
+			shopRepository.updateShopNoPhoto(shopEntity);//photo 수정에서 제외
+		else
+			shopRepository.save(shopEntity);//num이 포함되어있으므로 수정됨
 	}
 	
+
 	
 }
