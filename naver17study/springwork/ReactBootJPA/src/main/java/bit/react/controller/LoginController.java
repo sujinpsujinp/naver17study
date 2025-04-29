@@ -30,7 +30,7 @@ public class LoginController {
 		String token=this.authService.login(username, password);
 		Map<String,String> map=new HashMap<>();
 		map.put("token", token);
-		map.put("Authorization","Bearer "+token);
+		map.put("Authorization","Bearer "+token);//토큰을 보내때 Bearer을 붙여서 보내게 되어있음
 		return map;
 	}
 	

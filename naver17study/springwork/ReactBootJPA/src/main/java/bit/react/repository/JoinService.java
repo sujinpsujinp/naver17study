@@ -15,15 +15,9 @@ public class JoinService {
 
 	public void joinProcess(JoinDto dto) {
 		// TODO Auto-generated method stub
-		String username=dto.getUsername();
-		Boolean isExist=userRepository.existsByUsername(username);
-		if(isExist)
-		{
-			System.out.println("db에 이미 존재함! 가입 안됨");
-			return;
-		}
+		
 		UserEntity data=UserEntity.builder()
-				.username(username)
+				.username(dto.getUsername())
 				.password(bCryptPasswordEncoder.encode(dto.getPassword()))
 				.role(dto.getRole())
 				.address(dto.getAddress())
