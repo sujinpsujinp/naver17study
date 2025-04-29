@@ -1,5 +1,8 @@
 package bit.react.repository;
 
+import java.util.List;
+
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +28,19 @@ public class JoinService {
 		
 		//db에 저장
 		userRepository.save(data);
-		
 	}
+	
+	//전체 목록
+	public List<UserEntity> getAllMembers()
+	{
+		return userRepository.findAll(Sort.by(Sort.Direction.DESC,"id"));
+	}
+	
+	//삭제
+	public void deleteMemeber(int id)
+	{
+		userRepository.deleteById(id);
+	}
+	
 	
 }

@@ -2,12 +2,8 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Menu from '../conponents/Menu';
 import Home from '../conponents/Home';
-import MemberList from '../member/MemberList';
-import BoardList from '../board/BoardList';
-import JoinForm from '../member/JoinForm';
-import BoardForm from '../board/BoardForm';
-import BoardDetail from '../board/BoardDetail';
-import UpdateForm from '../board/UpdateForm';
+import { JoinForm, LoginForm, MemberList } from '../member';
+import { BoardDetail, BoardForm, BoardList, UpdateForm } from '../board';
 
 
 const RouterMain = () => {
@@ -22,6 +18,7 @@ const RouterMain = () => {
                 <Route path="/member" >
                     <Route path='list' element={<MemberList/>}/>
                     <Route path='join' element={<JoinForm/>}/>
+                    <Route path='login' element={<LoginForm/>}/>
                 </Route>
 
                 <Route path="/board" >

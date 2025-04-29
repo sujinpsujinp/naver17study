@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import DaumPostcodeEmbed from 'react-daum-postcode';
+import { useNavigate } from 'react-router-dom';
 
 const JoinForm = () => {
     const [username,setUsername]=useState('');
@@ -9,6 +10,7 @@ const JoinForm = () => {
     const [openPostCode,setOpenPostcode]=useState(false);   
     const [role,setRole]=useState('ROLE_MEMBER');
     const [idcheck,setIdCheck]=useState(false);//true 일때만 가입가능
+    const navi=useNavigate();
 
     //회원가입 이벤트
     const onSubmit=(e)=>{
@@ -17,6 +19,15 @@ const JoinForm = () => {
         alert("아이디 중복체크를 해주세요.");
         return;
       }
+
+      //db저장 후 로그인 폼으로 이동 key랑 value랑 같아서 한번에 적음
+      axios.post("/member/join",{username,password,role,address})
+      .then(res=>{
+          if(res.data==='success'){
+            alert("회원가입 되었습니다.");
+            navi("/member/login");
+          }
+      })
     }
     //중복 체크 버튼 이벤트
     const btnIdCheck=()=>{
@@ -73,7 +84,7 @@ const JoinForm = () => {
                 <tr>
                   <th className='table-info'>비밀번호</th>
                   <td>
-                    <input type='text' value={password}
+                    <input type='password' value={password}
                     onChange={(e)=>setPassword(e.target.value)}
                     required className='form-control'/>
                   </td>
@@ -100,9 +111,9 @@ const JoinForm = () => {
                 <tr>
                   <th className='table-info'>가입권한</th>
                   <td>
-                    <select className='form-select'>
-                      <option value={'ROLE_MEMBER'}>일반멤버</option>
-                      <option value={'ROLE_ADMIN'}>관리자</option>
+                    <select className='form-select' value={role} onChange={(e) => setRole(e.target.value)}> 
+                     <option value={'ROLE_MEMBER'}>일반멤버</option>
+                     <option value={'ROLE_ADMIN'}>관리자</option>
                     </select>
                   </td>
                 </tr>

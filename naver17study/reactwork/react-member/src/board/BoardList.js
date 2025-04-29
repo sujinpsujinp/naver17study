@@ -4,8 +4,7 @@ import React from 'react';
 const BoardList = () => {
     return (
         <div style={{margin:'15px'}}>
-            <Alert severity='success' style={{fontSize:'25px'}}>
-            BoardList</Alert>
+            <h2 className='alert alert-danger'>BoardList</h2>
         </div>
     );
 };

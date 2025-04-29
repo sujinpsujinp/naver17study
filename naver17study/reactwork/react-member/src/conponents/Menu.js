@@ -1,8 +1,9 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import "./mystyle.css";
 
 const Menu = () => {
+    const navi=useNavigate();
     return (
         <div>
             <ul className='menu'>
@@ -22,9 +23,7 @@ const Menu = () => {
             {
                 sessionStorage.token==null?
                 <button type='button' className='btn btn-sm btn-success'
-                onClick={()=>{
-
-                }}>로그인</button>
+                onClick={()=>{navi("/member/login")}}>로그인</button>
                 : 
                 <button type='button' className='btn btn-sm btn-success'
                 onClick={()=>{

@@ -1,5 +1,9 @@
 package bit.react.controller;
 
+import java.util.List;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -8,18 +12,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import bit.react.data.JoinDto;
+import bit.react.data.UserEntity;
 import bit.react.repository.JoinService;
 import bit.react.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/member")
+@CrossOrigin
 public class JoinController {
 	private final JoinService joinService;
 	private final UserRepository userRepository;
 	
-	@GetMapping("/idcheck")
+	@GetMapping("/member/idcheck")
 	public String idCheck(@RequestParam("username") String username)
 	{
 		Boolean isExist=userRepository.existsByUsername(username);
@@ -31,10 +36,25 @@ public class JoinController {
 			return "success";
 	}
 	
-	@PostMapping("/join")
+	@PostMapping("/member/join")
 	public String joinProcess(@RequestBody JoinDto dto)
 	{
 		joinService.joinProcess(dto);
 		return "success";
 	}
+	
+	@GetMapping("/auth/member/list")
+	public List<UserEntity> getAllMembers()
+	{
+		return joinService.getAllMembers();
+	}
+	
+	@DeleteMapping("/member/memberDel")
+	public String deleteMember(@RequestParam("id") int id)
+	{
+		joinService.deleteMemeber(id);
+		
+		return "delete OK";
+	}
+	
 }
